@@ -1,0 +1,28 @@
+program  
+define	
+ real n
+ integer a,b,i
+ string cadena, s
+enddefine
+
+
+beginp 
+i:=1	
+a:=15
+
+
+if i=15 then
+
+	i:=16
+else
+	repeat 
+		i:=5 + b
+	until a<7
+
+endif
+
+
+
+
+endp
+
