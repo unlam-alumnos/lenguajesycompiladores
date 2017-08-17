@@ -29,9 +29,9 @@ Cadena de llamados: A -> B
 
 Secuencia de eventos: (se asume que B es hijo de A)
 
-1. La unidad A se carga en la pila (CE = null, CD = null)
-2. Las variables estática "a" y "b" toman valor
-3. La unidad B se carga en la pila (CE = A, CD = A)
+1. La unidad A (registro de activación) se carga en la pila (CE = null, CD = null)
+2. Las variables semi-estática "a" y "b" toman valor
+3. La unidad B (registro de activación) se carga en la pila (CE = A, CD = A)
 4. Se crea un descriptor (puntero) en B que apunta a la variable "a" en A
 5. Se crea un descriptor (puntero) en B que apunta a la variable "b" en A
 
@@ -138,7 +138,7 @@ BP ------> |    +---------------------+    |
 
 MOV R2    , BP         // Resguarda BP de B
 MOV R1    , @ix        // Resguardo ix (3) en R1
-MOV BP    , BP+32      // Bajo por la cadena estática a A
+MOV BP    , BP+16      // Bajo por la cadena estática a A
 SUB R1    , BP+48      // Resto "a" (limite inferior)
 MUL R1    , 16         // Multiplico por el tamaño de un int
 ADD R1    , R2+48      // Suma final de acceso al vector en posición "ix"
