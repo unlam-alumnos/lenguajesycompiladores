@@ -1,0 +1,6 @@
+NOMBRE        TIPO        VALOR        ALIAS        LIMITE        LONGITUD
+
+contador      Integer     -            -            -             -
+promedio      Float       -            -            -             -
+actual        Float       -            -            -             -
+suma          Float       -            -            -             -
