@@ -1,0 +1,8 @@
+INICIO
+contador:= 0;
+actual:=contador:= 999;
+contador:= contador+1;
+contador:= contador + 1/ (actual *otra);
+actual:= (contador/342) + (contador*contador);
+actual:=promedio:=contador:=342;
+FIN
