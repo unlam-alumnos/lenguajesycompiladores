@@ -1,0 +1,14 @@
+Dada la siguiente gramática:
+
+R1: A -> [L] := cte
+R2: L -> L , E
+R3: L -> E
+R4: E -> E + id
+R5: E -> E * id
+R6: E -> id
+
+a) Hacer el parsing ascendente
+b) Hacer el árbol de parsing y devolver la lista de reglas para la hilera : [id, id + id * id, id, id + id] := cte
+c) Probar con FLEX y BISON y comparar la lista de reglas obtenida
+
+Se agrega la regla: S -> A (start)
