@@ -1,0 +1,92 @@
+S -> A
+A -> L := cte
+L -> id := L
+L -> id
+
+GRAFO DE ESTADOS:
+
+Estado 0:
+    S -> .A
+    A -> .L := cte
+    L -> .id := L
+    L -> .id
+
+0 => A  => 1
+  => L  => 2
+  => id => 3
+
+====================
+
+Estado 1:
+    S -> A.
+
+Estado 2:
+    A -> L .:= cte
+
+Estado 3:
+    L -> id .:= L
+    L -> id.
+
+2 => := => 4
+3 => := => 5
+
+====================
+
+Estado 4:
+    A -> L := .cte
+
+Estado 5:
+    L -> id := .L
+    L -> .id := L
+    L -> id.
+
+4 => cte => 6
+5 => L   => 7
+  => id  => 3 (recursivo)
+
+====================
+
+Estado 6:
+    A -> L := cte.
+
+Estado 7:
+    L -> id := L.
+
+====================
+
+Sabiendo que:
+
+0) Sgt(S) = $
+1) Sgt(A) = $
+2) Sgt(L) = :=
+
+Estados a reducir: 1, 3, 6, 7
+
+Este set de reglas presenta un problema. En la tabla de parsing vemos
+que para una misma celda tenemos un desplazamiento y una reducción.
+En (4, :=) hay un desplazamiento y una reducción (D5, R2).
+Esto no es posible. Se da porque hay una regla con recursividad a la derecha.
+Se deben cambiar las reglas y comenzar nuevamente.
+(Ver TABLA_PARSING_ERRONEA.png)
+
+======================================================================
+
+Nuevo set de reglas:
+
+S -> A
+A -> L cte
+L -> L id :=
+L -> id :=
+
+Nuevos siguientes:
+0) Sgt(S) = $
+1) Sgt(A) = $
+2) Sgt(L) = {cte,id}
+
+Ejecutar el algoritmo para:
+
+a) Hacer el parsing ascendente
+b) Hacer el árbol de parsing y devolver la lista de reglas para la hilera : id := id := id := cte
+c) Probar con FLEX y BISON y comparar la lista de reglas obtenida
+
+Se agrega la regla: S -> A (start)
