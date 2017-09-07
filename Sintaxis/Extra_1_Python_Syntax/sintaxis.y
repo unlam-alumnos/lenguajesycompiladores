@@ -25,21 +25,24 @@ char *str_val;
 %token PYC
 %token PP
 
-%start P
+%start S
 
 %%
 
-P : C;
+S : C                                     { printf("0,");} ;
 
-C : C B;
-C : B;
+C : C B                                   { printf("1,");} ;
+C : B                                     { printf("2,");} ;
 
-B : A | D;
+B : A                                     { printf("3,");} ;
+B : D                                     { printf("4,");} ;
 
-A : GLOBAL ID PYC | NON_LOCAL ID PYC;
-A : ID OP_AS ID PYC | ID OP_AS CTE PYC;
+A : GLOBAL ID PYC                         { printf("5,");} ;
+A : NON_LOCAL ID PYC                      { printf("6,");} ;
+A : ID OP_AS ID PYC                       { printf("7,");} ;
+A : ID OP_AS CTE PYC                      { printf("8,");} ;
 
-D : DEF ID P_A P_C PP;
+D : DEF ID P_A P_C PP                     { printf("9,");} ;
 
 %%
 
@@ -47,7 +50,9 @@ int main(int argc,char *argv[]) {
   if ((yyin = fopen(argv[1], "rt")) == NULL) {
 		printf("\nNo se puede abrir el archivo: %s\n", argv[1]);
   } else {
+    printf("\n");
 		yyparse();
+    printf("\n\n");
   }
 
   fclose(yyin);

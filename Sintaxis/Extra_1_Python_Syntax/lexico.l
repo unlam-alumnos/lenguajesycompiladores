@@ -34,8 +34,8 @@ NON_LOCAL         "nonlocal"
 {PYC}         			{ return PYC;               }
 {PP}           			{ return PP;                }
 
-{ID}			{ yylval.str_val = yytext; printf( "ID: %s\n", yylval.str_val) ; return ID;}
-{CTE}		  { yylval.intval = atoi(yytext); printf( "CTE: %d\n", yylval.intval) ; return CTE;}
+{ID}			{ yylval.str_val = yytext; /*printf( "ID: %s\n", yylval.str_val) ;*/ return ID;}
+{CTE}		  { yylval.intval = atoi(yytext); /*printf( "CTE: %d\n", yylval.intval) ;*/ return CTE;}
 
 "\n"
 "\t"
