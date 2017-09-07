@@ -1,0 +1,25 @@
+0) S -> C
+1) C -> C B
+2) C -> B
+3) B -> A
+4) B -> D
+5) A -> global id ;
+6) A -> non_local id ;
+7) A -> id = id ;
+8) A -> id = cte ;
+9) D -> def id ( ) :
+
+
+ESTADO 0
+--------
+
+S -> .C
+C -> .C B
+C -> .B
+B -> .A
+B -> .D
+A -> .global id ;
+A -> .non_local id ;
+A -> .id = id ;
+A -> .id = cte ;
+D -> .def id ( ) :
