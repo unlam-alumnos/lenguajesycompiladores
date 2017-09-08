@@ -4,22 +4,26 @@
 3) B -> A
 4) B -> D
 5) A -> global id ;
-6) A -> non_local id ;
+6) A -> nonlocal id ;
 7) A -> id = id ;
 8) A -> id = cte ;
 9) D -> def id ( ) :
 
 
-ESTADO 0
+Primeros
 --------
 
-S -> .C
-C -> .C B
-C -> .B
-B -> .A
-B -> .D
-A -> .global id ;
-A -> .non_local id ;
-A -> .id = id ;
-A -> .id = cte ;
-D -> .def id ( ) :
+P(S) = { global, nonlocal, id }
+P(C) = { global, nonlocal, id }
+P(B) = { global, nonlocal, id, def }
+P(A) = { global, nonlocal, id }
+P(D) = { def }
+
+Siguientes
+----------
+
+S(S) = { $ }
+S(C) = { $, global, nonlocal, id, def }
+S(B) = { $, global, nonlocal, id, def }
+S(A) = { $, global, nonlocal, id, def }
+S(D) = { $, global, nonlocal, id, def }

@@ -1,0 +1,59 @@
+0) S -> C
+1) C -> C B
+2) C -> B
+3) B -> A
+4) B -> D
+5) A -> global id ;
+6) A -> nonlocal id ;
+7) A -> id = id ;
+8) A -> id = cte ;
+9) D -> def id ( ) :
+
+==============================================================================================================
++----------------------------------+----------------------------------------------------------------+--------+
+| PILA                             | PROGRAMA POR ANALIZAR                                          | REGLAS |
++----------------------------------+----------------------------------------------------------------+--------+
+|                                  |      x = 1 ; def sub1 ( ) : global x ; nonlocal a ; z = 11 ; $ |        |
+|                                  |                                                                |        |
+| 0                                | id = cte ; def id ( ) : global id ; nonlocal id ; id = cte ; $ |        |
+| 0 id 7                           |    = cte ; def id ( ) : global id ; nonlocal id ; id = cte ; $ |        |
+| 0 id 7 = 12                      |      cte ; def id ( ) : global id ; nonlocal id ; id = cte ; $ |        |
+| 0 id 7 = 12 cte 17               |          ; def id ( ) : global id ; nonlocal id ; id = cte ; $ |        |
+| 0 id 7 = 12 cte 17 ; 20          |            def id ( ) : global id ; nonlocal id ; id = cte ; $ |        |
+| 0 A 3                            |            def id ( ) : global id ; nonlocal id ; id = cte ; $ |   8    |
+| 0 B 2                            |            def id ( ) : global id ; nonlocal id ; id = cte ; $ |   3    |
+| 0 C 1                            |            def id ( ) : global id ; nonlocal id ; id = cte ; $ |   2    |
+| 0 C 1 def 8                      |                id ( ) : global id ; nonlocal id ; id = cte ; $ |        |
+| 0 C 1 def 8 id 13                |                   ( ) : global id ; nonlocal id ; id = cte ; $ |        |
+| 0 C 1 def 8 id 13 ( 18           |                     ) : global id ; nonlocal id ; id = cte ; $ |        |
+| 0 C 1 def 8 id 13 ( 18 ) 21      |                       : global id ; nonlocal id ; id = cte ; $ |        |
+| 0 C 1 def 8 id 13 ( 18 ) 21 : 22 |                         global id ; nonlocal id ; id = cte ; $ |        |
+| 0 C 1 D 4                        |                         global id ; nonlocal id ; id = cte ; $ |   9    |
+| 0 C 1 B 9                        |                         global id ; nonlocal id ; id = cte ; $ |   4    |
+| 0 C 1                            |                         global id ; nonlocal id ; id = cte ; $ |   1    |
+| 0 C 1 global 5                   |                                id ; nonlocal id ; id = cte ; $ |        |
+| 0 C 1 global 5 id 10             |                                   ; nonlocal id ; id = cte ; $ |        |
+| 0 C 1 global 5 id 10 ; 14        |                                     nonlocal id ; id = cte ; $ |        |
+| 0 C 1 A 3                        |                                     nonlocal id ; id = cte ; $ |   5    |
+| 0 C 1 B 9                        |                                     nonlocal id ; id = cte ; $ |   3    |
+| 0 C 1                            |                                     nonlocal id ; id = cte ; $ |   1    |
+| 0 C 1 nonlocal 6                 |                                              id ; id = cte ; $ |        |
+| 0 C 1 nonlocal 6 id 11           |                                                 ; id = cte ; $ |        |
+| 0 C 1 nonlocal 6 id 11 ; 15      |                                                   id = cte ; $ |        |
+| 0 C 1 A 3                        |                                                   id = cte ; $ |   6    |
+| 0 C 1 B 9                        |                                                   id = cte ; $ |   3    |
+| 0 C 1                            |                                                   id = cte ; $ |   1    |
+| 0 C 1 id 7                       |                                                      = cte ; $ |        |
+| 0 C 1 id 7 = 12                  |                                                        cte ; $ |        |
+| 0 C 1 id 7 = 12 cte 17           |                                                            ; $ |        |
+| 0 C 1 id 7 = 12 cte 17 ; 20      |                                                              $ |        |
+| 0 C 1 A 3                        |                                                              $ |   8    |
+| 0 C 1 B 9                        |                                                              $ |   3    |
+| 0 C 1                            |                                                              $ |   1    |
+| 0 S                              |                                                              $ |   0    |
++----------------------------------+----------------------------------------------------------------+--------+
+| COMPILE SUCCESSFUL!!! - Reglas aplicadas: 8,3,2,9,4,1,5,3,1,6,3,1,8,3,1,0                                  |                                                                 |
++------------------------------------------------------------------------------------------------------------+
+==============================================================================================================
+
+Flex & BISON: 8,3,2,9,4,1,5,3,1,6,3,1,8,3,1,0
