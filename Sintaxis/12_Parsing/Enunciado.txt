@@ -11,6 +11,19 @@ c) Probar con FLEX y BISON y comparar la lista de reglas obtenida
 
 Se agrega la regla: S -> P (start)
 
+Primeros
+
+P(P) = { id }
+P(L) = { id }
+P(I) = { id }
+
+Siguientes
+
+S(S) = { $ }
+S(P) = { $ }
+S(L) = { fin , }
+S(I) = { fin , }
+
 ------------------
 
 Estado 0:
