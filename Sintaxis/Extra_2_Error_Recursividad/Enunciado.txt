@@ -78,6 +78,12 @@ A -> L cte
 L -> L id :=
 L -> id :=
 
+Primeros
+--------
+P(S) = { id }
+P(A) = { id }
+P(L) = { id }
+
 Nuevos siguientes:
 0) Sgt(S) = $
 1) Sgt(A) = $
