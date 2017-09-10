@@ -1,0 +1,33 @@
+Reglas
+------
+
+0) S -> P
+1) P -> L fin
+2) L -> L , I
+3) L -> I
+4) I -> id := exp
+
+
+Generación de la polaca inversa
+-------------------------------
+
+0) -
+1) insertar_en_polaca(fin)
+2) insertar_en_polaca(,)
+3) -
+4) insertar_en_polaca(id); insertar_en_polaca(:=); insertar_en_polaca(exp)
+
+
+Polaca Inversa
+--------------
+
+- Sentencia:   id := exp fin
+- Reglas   :   4, 3, 1
+
+
+4) insertar_en_polaca(id); insertar_en_polaca(:=); insertar_en_polaca(exp)
+3) -
+1) insertar_en_polaca(fin)
+
+
+id := exp fin

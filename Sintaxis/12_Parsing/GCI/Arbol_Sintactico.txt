@@ -1,0 +1,38 @@
+Reglas
+------
+
+0) S -> P
+1) P -> L fin
+2) L -> L , I
+3) L -> I
+4) I -> id := exp
+
+
+Punteros
+--------
+
+Sp, Pp, Lp, Ip
+
+
+Generación del árbol sintáctico
+-------------------------------
+
+0) Sp = Pp
+1) Pp = crearNodo("fin", Lp)
+2) Lp = crearNodo(",", Lp, Ip)
+3) Lp = Ip
+4) Ip = crearNodo(":=", crearHoja("id"), crearHoja("exp"))
+
+
+Aplicación del árbol
+--------------------
+
+- Sentencia:   id := exp fin
+- Reglas   :   4, 3, 1
+
+Sp
+Lp
+Ip
+  :=
+    id
+    exp
