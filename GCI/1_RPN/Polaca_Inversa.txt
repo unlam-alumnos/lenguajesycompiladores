@@ -1,0 +1,63 @@
+ 0) S -> A
+ 1) A -> id := P
+ 2) P -> prom ( L )
+ 3) L -> L , E
+ 4) L -> E
+ 5) E -> E + T
+ 6) E -> E - T
+ 7) E -> T
+ 8) T -> T * F
+ 9) T -> T / F
+10) T -> F
+11) F -> id
+12) F -> cte
+13) F -> ( E )
+
+1) insertar_en_polaca(id);
+   insertar_en_polaca(:=)
+
+2) insertar_en_polaca(prom);
+   insertar_en_polaca(();
+   insertar_en_polaca())
+
+3) insertar_en_polaca(,)
+
+5) insertar_en_polaca(+)
+
+6) insertar_en_polaca(-)
+
+8) insertar_en_polaca(*)
+
+9) insertar_en_polaca(/)
+
+11) insertar_en_polaca(id)
+
+12) insertar_en_polaca(cte)
+
+13) insertar_en_polaca(();
+    insertar_en_polaca())
+
+===========================================
+
+  a := prom ( a + b , 3 , c * ( d - a ) )
+
+===========================================
+
+Reglas aplicadas: 11,10,7,11,10,5,4,12,10,7,3,11,10,11,10,7,11,10,6,13,8,7,3,2,1,0
+
+Flex & BISON: a a b + 3 , c d a - * , prom :=
+
+insertar_en_polaca(a)
+insertar_en_polaca(a)
+insertar_en_polaca(b)
+insertar_en_polaca(+)
+insertar_en_polaca(3)
+insertar_en_polaca(,)
+insertar_en_polaca(c)
+insertar_en_polaca(d)
+insertar_en_polaca(a)
+insertar_en_polaca(-)
+insertar_en_polaca(*)
+insertar_en_polaca(,)
+insertar_en_polaca(prom)
+insertar_en_polaca(:=)
