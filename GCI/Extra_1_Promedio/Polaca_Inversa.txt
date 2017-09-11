@@ -1,0 +1,27 @@
+
+insertar_en_polaca(_10)
+insertar_en_polaca(_20)
+insertar_en_polaca(+)
+insertar_en_polaca(_30)
+insertar_en_polaca(+)
+insertar_en_polaca(_40)
+insertar_en_polaca(+)
+insertar_en_polaca(4)
+insertar_en_polaca(/)
+insertar_en_polaca(a)
+insertar_en_polaca(:=)
+
+Reglas: 2,3,3,3,1
+
+=====================================
+
+  a := avg ( _10 , _20 , _30, _40 )
+
+=====================================
+
+RPN : _10 _20 + _30 + _40 + CONT / a :=
+
+S    : PROM                      ;
+PROM : ID OP_AS AVG PARA L PARC  { printf("insertar_en_polaca(%d)\n", cont); printf("insertar_en_polaca(/)\n"); printf("insertar_en_polaca(%s)\n", "id"); printf("insertar_en_polaca(:=)\n");} ;
+L    : CTE                       { cont++; printf("insertar_en_polaca(%d)\n", yylval.intval); };
+L    : L COMA CTE                { cont++; printf("insertar_en_polaca(%d)\n", yylval.intval); printf("insertar_en_polaca(+)\n");} ;
