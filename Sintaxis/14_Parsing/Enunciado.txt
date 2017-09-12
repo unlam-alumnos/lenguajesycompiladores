@@ -1,0 +1,35 @@
+Dada la gramática del ejercicio 8
+
+a) Hacer el parsing ascendente
+b) Hacer el árbol de parsing y devolver la lista de reglas para la hilera actual:= (contador/342) + (contador*contador);
+c) Probar con FLEX y BISON y comparar la lista de reglas obtenida
+
+S -> P
+P -> id := E ;
+E -> E + T
+E -> E - T
+E -> T
+T -> T * F
+T -> T / F
+T -> F
+F -> id
+F -> cte
+F -> ( E )
+
+Primeros
+--------
+
+P(S) = { id }
+P(P) = { id }
+P(E) = { id }
+P(T) = { id }
+P(F) = { id }
+
+Siguientes
+----------
+
+S(S) = { $           }
+S(P) = { $           }
+S(E) = { + - ; )     }
+S(T) = { + - ; ) * / }
+S(F) = { + - ; ) * / }

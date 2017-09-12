@@ -1,0 +1,1 @@
+actual := (contador/342) + (contador*contador);
