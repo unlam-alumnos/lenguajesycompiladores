@@ -1,0 +1,15 @@
+Reglas
+------
+
+S : M
+M : ID OP_AS MAYOR PARA L PARC
+L : ID
+L : L COMA ID
+
+Ejercicio 1
+-----------
+a := mayor(_3,_4,_5,_1)
+
+Ejercicio 2
+-----------
+a := mayor(a, b, c, d)
