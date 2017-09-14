@@ -18,7 +18,6 @@ PARC              ")"
 AVG               "avg"
 COMA              ","
 
-
 %%
 {OP_AS}			        { return OP_AS;    }
 {PARA}         			{ return PARA;     }
@@ -27,8 +26,8 @@ COMA              ","
 {COMA}         			{ return COMA;     }
 
 
-{ID}			{ yylval.str_val = yytext; /*printf("insertar_en_polaca(%s)\n", yytext);*/ return ID;}
-{CTE}		  { yylval.intval = atoi(yytext); /*printf("insertar_en_polaca(%s)\n", yytext);*/ return CTE;}
+{ID}			{ yylval.str_val = yytext; return ID;}
+{CTE}		  { yylval.intval = atoi(yytext); return CTE;}
 
 "\n"
 "\t"
