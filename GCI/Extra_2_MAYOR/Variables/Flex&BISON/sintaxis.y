@@ -70,13 +70,9 @@ A    : VAR OP_AS CTE               {
                                    };
 
 A    : VAR OP_AS MAYOR PARA L PARC {
-                                      printf("1. insertar_en_polaca(%d) \n", mayor);
-                                      /*
-                                         Por el mismo problema descripto abajo, no puedo mostrar el ID para insertar en polaca.
-                                         Tampoco puedo aislar ID en otra regla ya que existe "VAR" y genera conflictos.
-                                      */
-                                      printf("2. insertar_en_polaca(result) \n");
-                                      printf("3. insertar_en_polaca(:=) \n");
+                                      printf("insertar_en_polaca(%d) \n", mayor);
+                                      printf("insertar_en_polaca(%s) \n", asig_aux);
+                                      printf("insertar_en_polaca(:=) \n");
                                    };
 
 L    : ID                          {
