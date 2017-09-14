@@ -6,10 +6,10 @@ M : ID OP_AS MAYOR PARA L PARC
 L : ID
 L : L COMA ID
 
-Ejercicio 1
------------
-a := mayor(_3,_4,_5,_1)
+Ejercicio 1 - Constantes
+-------------------------
+a := mayor(3,4,5,1)
 
-Ejercicio 2
------------
+Ejercicio 2 - Variables
+-------------------------
 a := mayor(a, b, c, d)
