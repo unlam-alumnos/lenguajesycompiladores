@@ -1,12 +1,15 @@
 %{
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "y.tab.h"
 int yystopparser=0;
 FILE *yyin;
 int cont = 0;
 int yylex();
 int yyerror(char *);
+
+char *aux;
 %}
 
 %union {
@@ -29,11 +32,16 @@ int yyerror(char *);
 
 S    : PROM                                 ;
 
-PROM : _ID OP_AS AVG PARA L PARC            {
-                                                printf("1. insertar_en_polaca(%d)\n", cont);
-                                                printf("2. insertar_en_polaca(/)\n");
-                                                printf("4. insertar_en_polaca(:=)\n");
-                                            } ;
+PROM : ID                                   {
+                                                aux = (char *) malloc(sizeof(char) * (strlen(yylval.str_val) + 1));
+                                                strcpy(aux, yylval.str_val);
+                                                printf("insertar_en_polaca(%s)\n", aux);
+                                            }
+       OP_AS AVG PARA L PARC                {
+                                                printf("insertar_en_polaca(%d)\n", cont);
+                                                printf("insertar_en_polaca(/)\n");
+                                                printf("insertar_en_polaca(:=)\n");
+                                            };
 
 L    : CTE                                  {
                                                 cont++;
@@ -45,8 +53,6 @@ L    : L COMA CTE                           {
                                                 printf("insertar_en_polaca(%d)\n", yylval.intval);
                                                 printf("insertar_en_polaca(+)\n");
                                             };
-
-_ID  : ID                                   { printf("3. insertar_en_polaca(%s)\n", yyval.str_val); }
 
 %%
 
