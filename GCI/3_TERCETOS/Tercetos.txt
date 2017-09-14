@@ -1,0 +1,26 @@
+Fp = crearTerceto(a)
+Tp = Fp
+Ep = Tp
+Fp = crearTerceto(b)
+Tp = Fp
+Ep = crearTerceto('+', Ep, Tp)
+Lp = Ep
+Fp = crearTerceto(3)
+Tp = Fp
+Ep = Tp
+Lp = crearTerceto('+', Lp, Ep)
+Fp = crearTerceto(c)
+Tp = Fp
+Fp = crearTerceto(d)
+Tp = Fp
+Ep = Tp
+Fp = crearTerceto(a)
+Tp = Fp
+Ep = crearTerceto('-', Ep, Tp)
+Fp = Ep
+Tp = crearTerceto('*', Tp, Fp)
+Ep = Tp
+Lp = crearTerceto('+', Lp, Ep)
+Pp = crearTerceto('/', Lp, 3)
+Ap = crearTerceto(':=', a, Pp)
+Sp = Ap

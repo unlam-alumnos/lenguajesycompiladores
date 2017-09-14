@@ -1,0 +1,11 @@
+Suponga una sentencia que calcula el promedio de una lista de expresiones y se lo asigna a un identificador y cuya sintaxis está representada con las siguiente reglas gramaticales:
+
+A -> id := P
+P -> prom ( L )
+L -> L , E | E
+E -> E + T | E – T | T
+T -> T * F | T / F | F
+F -> id | cte | ( E )
+
+a) Representar la sentencia a:= prom ( [a+b, 3, c*(d-a) ] ) en tercetos de manera que toda la semántica sea resuelta en la notación intermedia
+b) Escribir las acciones semánticas en cada regla para generar código en tercetos para cualquier sentencia con el formato indicado.
