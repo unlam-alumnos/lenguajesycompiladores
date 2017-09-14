@@ -1,0 +1,25 @@
+Fp = crearHoja(a)
+Tp = Fp
+Ep = Tp
+Fp = crearHoja(b)
+Tp = Fp
+Ep = crearNodo('+', Ep, Tp)
+Lp = Ep
+Fp = crearHoja(3)
+Tp = Fp
+Ep = Tp
+Lp = crearNodo('+', Lp, Ep)
+Fp = crearHoja(c)
+Tp = Fp
+Fp = crearHoja(d)
+Tp = Fp
+Ep = Tp
+Fp = crearHoja(a)
+Tp = Fp
+Ep = crearNodo('-', Ep, Tp)
+Tp = crearNodo('*', Tp, Fp)
+Ep = Tp
+Lp = crearNodo('+', Lp, Ep)
+Pp = crearNodo('/', Lp, crearHoja(3))
+Ap = crearNodo(':=', crearHoja(a), Pp)
+Sp = Ap
