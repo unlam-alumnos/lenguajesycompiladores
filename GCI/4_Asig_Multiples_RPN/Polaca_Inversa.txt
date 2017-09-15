@@ -1,0 +1,15 @@
+insertar_en_polaca(actual)
+insertar_en_polaca(promedio)
+insertar_en_polaca(contador)
+insertar_en_polaca(promedio)
+insertar_en_polaca(342)
+insertar_en_polaca(/)
+insertar_en_polaca(contador)
+insertar_en_polaca(contador)
+insertar_en_polaca(*)
+insertar_en_polaca(+)
+insertar_en_polaca(:=)
+insertar_en_polaca(:=)
+insertar_en_polaca(:=)
+
+actual := promedio := contador := promedio / 342 + contador * contador
