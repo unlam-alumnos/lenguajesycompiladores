@@ -1,0 +1,4 @@
+Sea la gramática del ejercicio 9 de la práctica 1 que resuelve la asignación múltiple.
+
+a) Representar la sentencia actual:=promedio:=contador:= promedio/ 342 + (contador*contador); en polaca inversa de manera que toda la semántica sea resuelta en la notación intermedia
+b) Escribir las acciones semánticas en cada regla para generar código en polaca inversa para cualquier sentencia con el formato indicado.
