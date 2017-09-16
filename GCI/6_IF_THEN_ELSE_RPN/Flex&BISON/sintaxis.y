@@ -46,12 +46,12 @@ I  : IF C T P E P ENDIF
 T  : THEN                                 {
                                             printf("CMP\n"); i++;
                                             printf("BGE\n"); i++;
-                                            printf("###### %d\n", i); i++;
+                                            printf("### %d\n", i); i++;
                                           }
 
 E  : ELSE                                 {
                                             printf("BI\n"); i++;
-                                            printf("###### %d\n", i); i++;
+                                            printf("### %d\n", i); i++;
                                           }
 
 C  : _ID                                  {
