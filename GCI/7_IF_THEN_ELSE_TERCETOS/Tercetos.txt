@@ -1,0 +1,38 @@
+a
+3
+CMP
+BGE (<)
+16
+c
+1
++
+b
+:=
+28
+a
+:=
+BI
+28
+b
+245
+CMP
+BGE (<)
+28
+67
+b
+*
+c
++
+a
+:=
+-----------------
+
+start       :
+programa    :
+sent        :
+asig        :
+sel         :
+cond        :
+exp         :
+tern        :
+factor      :
