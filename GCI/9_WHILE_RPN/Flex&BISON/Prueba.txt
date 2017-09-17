@@ -1,0 +1,7 @@
+WHILE a*3 <= b
+  a:= a+2
+  b:= 5
+  WHILE b <= 5
+    a:= a+1
+  END
+END

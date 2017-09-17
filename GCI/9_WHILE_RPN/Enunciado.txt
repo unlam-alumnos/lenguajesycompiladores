@@ -1,0 +1,28 @@
+9. Suponga la siguiente gramática que representa la sintaxis de un lenguaje que solo permite que sus programas tengan sentencias de selección.
+
+start    -> programa
+programa -> programa sent
+programa -> sent
+sent     -> ciclo | asig
+asig     -> ID := exp
+ciclo    -> WHILE cond programa END
+cond     -> exp <= exp
+exp      -> exp + term
+exp      -> term
+term     -> term * factor
+term     -> factor
+factor   -> CTE
+factor   -> ID
+
+a) Representar la siguiente sentencia en polaca inversa de manera que toda la semántica sea resuelta en la notación intermedia
+
+WHILE a*3 <= b
+  a:= a+2
+  b:= 5
+  WHILE b <= 5
+    a:= a+1
+  END
+END
+
+b) Escribir las acciones semánticas en cada regla para generar código en polaca inversa para cualquier sentencia con el formato indicado.
+c) Testear con las acciones escritas en el punto b), el resultado del punto a)
