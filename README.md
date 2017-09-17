@@ -9,9 +9,8 @@
 1. Python 2.7+
 1. Flex (accesible via linea de comando)
 1. Bison (accesible via linea de comando)
-1. [PeachPy](https://github.com/Maratyszcza/PeachPy) (para ejemplos de assembler)
 
-### Ejemplo
+### Ejecutando un Ejemplo de Flex & Bison
 
 ```bash
 git clone https://github.com/unlam/lenguajesycompiladores.git
@@ -20,10 +19,11 @@ cd Flex&Bison/Ejemplo1
 python ejemplo.py
 ```
 
-### Instalación de PeachPy
+### Ejecutando un Ejemplo de Assembler
 
 ```bash
-sudo pip install --upgrade git+https://github.com/Maratyszcza/PeachPy
+cd GCI/Extra_1_AVG
+python assembler.py
 ```
 
 ---
