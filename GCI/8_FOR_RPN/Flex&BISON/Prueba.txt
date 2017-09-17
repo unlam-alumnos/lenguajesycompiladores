@@ -1,0 +1,8 @@
+c := 0
+FOR i:=1 TO 20
+{
+  a:= c+ 67 * b
+  b:=b+1
+  c:=c+1
+}
+FOREND
