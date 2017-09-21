@@ -1,0 +1,4 @@
+Ejercicio 1:
+
+- Debería devolver un TOKEN por cada Regex.
+- Los comentarios pueden ser ignorados en el analizador léxico (esto se logra no devolviendo nada al analizador sintáctico).
