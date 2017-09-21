@@ -1,0 +1,2 @@
+x = /* Ignorar esto */ 1;
+y = 2; // Ignorar esto tambien
