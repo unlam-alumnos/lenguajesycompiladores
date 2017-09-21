@@ -1,0 +1,46 @@
+1 - Hacer parsing ascendente de esta gramatica e indicar si hay algun conflicto.
+S es el start symbol y ya esta aumentada la gramatica.
+
+S1 -> S
+S  -> (L)
+L  -> id
+L  -> S
+L  -> LS
+
+
+2 - Si se pasa la string "a9,a9,aa,99aa,aaa9a,999" a un analizador lexico con los siguientes tokens definidos, indicar que tira de tokens devuelve.
+
+LE: a...z|A...Z
+DIG: 0...9
+COMA: ","
+EXP1: {{LE}{LE}}+ {print(EXP1);}
+EXP2: {{COMA}}({LE}|{DIG})+ {print(EXP2);}
+EXP3: {LE}({DIG}+){COMA} {print(EXP3);}
+
+
+3 - Si se genera codigo intermedio a partir de parsing ascendente o descendente, cambia algo en el codigo assembler que se generara a partir de ese codigo intermedio?
+
+
+4 - Graficar arbol sintactico para el siguiente fragmento de codigo
+
+a=0;
+
+do
+a=a+1;
+if (a<4)
+	b[a]=a+1;
+endif
+while (a<10)
+
+
+5 - Supongamos que se cambia un programa a un lexico con tipos guiados por sintaxis. Decir en que etapas se ven afectadas por esta modificacion.
+(Tipos guiados por sintaxis es poner, por ejemplo, % antes del ID y sabes que es int, & antes del ID y sabes que es float...)
+
+Decir que etapas se ven afectadas durante la compilacion y describir que pasa en cada una
+
+a) AL
+b) AS
+c) GCI
+d) GCASM
+e) Ejecucion
+f) ¿Cambia la tabla de simbolos?

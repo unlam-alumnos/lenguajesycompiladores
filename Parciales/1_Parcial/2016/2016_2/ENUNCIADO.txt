@@ -1,0 +1,41 @@
+1 - Si le paso el codigo "hhhhjmm" a un analizador sintactico que usa parsing bottom-up y tiene estas reglas, ¿que devuelve?
+
+S -> hh W
+S -> j
+W -> S m
+
+a) 11233
+b) 33211
+c) 32121
+d) 23131
+e) 13123
+f) Ninguna
+g) Sintaxis incorrecta
+
+
+2 - Decir a que parte de la compilacion/ejecucion pertenecen estos mensajes y justificar por que.
+
+a) No se reconoce el simbolo recibido
+b) El indice del vector esta fuera de rango
+c) Indice de matriz no es del tipo entero
+d) El TOKEN recibido no se esperaba
+e) Se esta indexando un id que no es un vector
+f) Puntero apunta a una direccion de memoria prohibida
+g) Variable fuera de rango, dentro de una union
+
+
+3 - Polaca inversa: Se hace una compilacion con polaca inversa siguiendo las etapas Lista de Reglas -> Polaca Inversa -> Codigo ASM.
+Sabiendo que la polaca inversa hace uso de una pila, es esta necesaria siempre?
+Decir si es necesaria o no en cada una de las siguientes etapas:
+
+a) Lista de Reglas -> Polaca Inversa
+b) Polaca Inversa -> Codigo Assembler
+c) Ejecucion
+
+
+4 - Durante la etapa de creacion del compilador:
+a) ¿Donde se guardan los valores de las variables de usuario y quien se encarga de administrarlas?
+b) Decir cual es la regla que dispara la generacion de codigo intermedio y explicar.
+
+
+5 - Considere una generacion de codigo intermedio de arbol sintactico. Quiero que cuando se este por armar un nodo que divida b/1, en vez de crearlo optimice el codigo y cree solo una hoja "b". Explicar que necesito cambiar para lograr esto.
