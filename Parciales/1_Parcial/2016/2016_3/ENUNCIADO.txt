@@ -41,8 +41,8 @@ integer a
 ALIAS x%a
 ALIAS b%c		// Esto da error, porque c no esta definido
 
-
 Decir que etapas se ven afectadas durante la compilacion y describir que pasa en cada una
+
 a) AL
 b) AS
 c) TS

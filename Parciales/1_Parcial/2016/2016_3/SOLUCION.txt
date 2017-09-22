@@ -1,0 +1,208 @@
+################################################################################
+-----
+- 1 -
+-----
+
+a) Gramática
+   ---------
+
+S -> A
+A -> id := FACT ( cte )
+
+Nota: Los comentarios son ignorados por el analizador léxico
+
+b) Funciones en polaca
+   -------------------
+
+Nota: Hay dos formas válidas de resolver el ejercicio durante la generación de código intermedio.
+      En clase parece haberse dado la forma 2 como válida (en lo cual estoy en desacuerdo).
+      La forma 1 me parece la correcta.
+
+Forma 1
+-------
+
+/*
+f = 1
+c = cte
+while (c > 1) {
+  f = f * c
+  c = c - 1
+}
+id = f
+*/
+
+A -> id := FACT ( cte ) {
+
+    pol("id");
+    pol("f");
+    pol("1");
+    pol("=");
+    pol("c");
+    pol(atoi(cte));
+    pol("=");
+    pol("c"); apilar(celdaActual); avanzar();
+    pol("1");
+    pol("CMP");
+    pol("BLE"); apilar(celdaActual); avanzar();
+    pol("f");
+    pol("f");
+    pol("c");
+    pol("*");
+    pol("=");
+    pol("c");
+    pol("c");
+    pol("1");
+    pol("-");
+    pol("=");
+    pol("BI"); Z = desapilar(); Z->valor = celdaActual + 1; avanzar();
+    Z = desapilar(); pol(Z->nroCelda); avanzar();
+    pol("f");
+    pol("=");
+
+}
+
++-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+|  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  10 |  11 |  12 |
++-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+|  id |  f  |  1  |  =  |  c  | cte |  =  |  c  |  1  | CMP | BLE |  25 |
++-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+
++-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+|  13 |  14 |  15 |  16 |  17 |  18 |  19 |  20 |  21 |  22 |  23 |  24 |  25 |  26 |
++-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+|  f  |  f  |  c  |  *  |  =  |  c  |  c  |  1  |  -  |  =  |  BI |  8  |  f  |  =  |
++-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+
+
+Forma 2
+-------
+
+/*
+if (cte == 0) {
+  id = 1
+} else {
+  c = cte
+  f = 1
+  while (c != 1) {
+    f = f * c
+    c = c - 1
+  }
+  id = f
+}
+*/
+
+A -> id := FACT ( cte ) {
+
+    pol("id");
+    c = cte;
+    if (c == 0 || c == 1) {
+      pol("1");
+    } else {
+      pol(c);
+      while (c != 1) {
+        c--;
+        pol(c);
+        pol("*");
+      }
+    }
+    pol("=");
+
+}
+
++-----+-----+-----+-----+-----+-----+-----+-----+-----+
+|  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |
++-----+-----+-----+-----+-----+-----+-----+-----+-----+
+|  id |  4  |  3  |  *  |  2  |  *  |  1  |  *  |  =  |
++-----+-----+-----+-----+-----+-----+-----+-----+-----+
+
+################################################################################
+
+-----
+- 2 -
+-----
+
+<start>      ->  <programa>
+
+<programa>   ->  <programa> <linea>
+<programa>   ->  <linea>
+
+<linea>      ->  <nodo> | <lista>
+
+<nodo>       ->  SYM | NUM
+<lista>      ->  ( ) | ( <elemento> )
+
+<elemento>   -> <elemento> <linea>
+<elemento>   -> <linea>
+
+
+################################################################################
+
+-----
+- 3 -
+-----
+
+No es posible. En caso de que el lexema no concuerde con la expresión regular definida en el léxico,
+este no llegará a su estado final y no retornará un TOKEN ni error alguno.
+
+
+################################################################################
+
+-----
+- 4 -
+-----
+
+S -> E
+E -> E : E
+E -> E + E
+E -> id
+E -> ( E )
+
+Nota: Se agrega S -> E para establecer S como starting point.
+
+Rta: La gramática dada es ambigua. Hay una reducción y un desplazamiento en la misma celda de la tabla de parsing, lo cual no es correcto.
+
+
+################################################################################
+
+-----
+- 5 -
+-----
+
+integer a
+ALIAS x%a
+ALIAS b%c		// Esto da error, porque c no esta definido
+
+a) AL
+
+Análisis Léxico: Este devuelve un token al analizador sintáctico en caso de que
+                 el lexema analizado corresponda a una de las expresiones regulares
+                 especificadas.
+                 El comentario es ignorado y no se devuelve nada en este caso.
+                 De esta forma, el AS no debe preocuparse de su existencia.
+
+b) AS
+
+Análisis Sintáctico: Posee reglas gramaticales que deben cumplirse para considerar
+                     correcta la sintáxis del programa analizado. Pide al AL tokens,
+                     los cuales utilizará para la generación de código intermedio
+                     dentro de sus acciones semánticas por cada regla.
+
+c) TS
+
+Tabla de símbolos: Contiene en sus filas a símbolos de TOKENS que coinciden con más de un lexema.
+                   En este caso los siguientes símbolos están en la tabla:
+                      - VAR  |  a  |  integer  |  x
+                   Cuando el AS intenta actualizar el ALIAS del símbolo "c", este reconoce que no se
+                   encuentra en tabla de símbolos y arroja un error.
+
+d) GCI
+
+Generación de Código Intermedio: Se genera código intermedio en las acciones semánticas de cada regla.
+                                 Es en esta etapa donde se insertan, buscan y actualizan símbolos en
+                                 la tabla de símbolos.
+
+e) GCASM
+
+Generación de código assembler: Se genera código assembler con operaciones básicas a resolver por el procesador.
+                                En este caso no se genera ningún tipo de código ASM ya que solo hay una
+                                declaración de variable y dos ALIAS.
