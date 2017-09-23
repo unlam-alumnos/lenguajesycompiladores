@@ -1,0 +1,78 @@
+################################################################################
+-----
+- 1 -
+-----
+
+0                     |    hhhhjmm $   |
+0 hh 1                |      hhjmm $   |
+0 hh 1 hh 1           |        jmm $   |
+0 hh 1 hh 1 j 2       |         mm $   |
+0 hh 1 hh 1 S 4       |         mm $   |  2
+0 hh 1 hh 1 S 4 m 5   |          m $   |
+0 hh 1 hh 1 W 3       |          m $   |  3
+0 hh 1 S 4            |          m $   |  1
+0 hh 1 S 4 m 5        |            $   |
+0 hh 1 W 3            |            $   |  3
+0 S                   |            $   |  1
+
+Rta: d. Reglas: 2, 3, 1, 3, 1
+
+
+################################################################################
+-----
+- 2 -
+-----
+
+a) AS (El lexema dado no corresponde con ningún TOKEN definido)
+b) AS o Ejecución (depende de si valido o no limites)
+c) AS (Se busca en TS si el tipo es INT)
+d) AS (Se esperaba otro TOKEN al provisto. No cumple con las reglas sintácticas)
+e) AS (Busco en TS si es un vector o no)
+f) Ejecución (No hay direccionamiento de memoria durante la compilación)
+g) AS o Ejecución (Si se sabe el valor de la variable y hago comprobación de rango, sino Ejecución ya que no se sabe el valor de la variable hasta ejecutar)
+
+
+################################################################################
+-----
+- 3 -
+-----
+
+a) Se requiere una estructura de tipo pila para almacenar punteros a las celdas
+   de la RPN en caso de haber saltos que requieran posterior actualización. En
+   caso de no contar con saltos (Selecciones, Loops), la pila no será requerida.
+
+b) Al recorrer la polaca inversa, sus elementos serán almacenados en una pila.
+   El código ASM se genera con los elementos apilados a medida que se avanza en
+   la RPN.
+
+c) En ejecución ya no es necesaria una pila ya que el procesador ejecutará el
+   código assembler ya generado.
+
+
+################################################################################
+-----
+- 4 -
+-----
+
+a) En tiempo de compilación no se conocen los valores de las variables del usuario.
+b) La generación de código intermedio se realiza en las acciones de las reglas
+   sintácticas definidas. A medida que se comienza a analizar el programa del usuario, si
+   hay acciones, se ejecutarán generando código intermedio. En caso de realizar una sola acción
+   al final de la regla, se generará código intermedio cuando se termine de analizar la misma.
+
+
+################################################################################
+-----
+- 5 -
+-----
+
+Al ser la sentencia: b / 1, b se divide por 1 lo cual es igual a b.
+Por lo tanto se puede reemplazar la acción:
+
+  crearNodo("/", b, 1);
+
+por
+
+  crearHoja(b);
+
+con fines de optimizar el árbol sintáctico.
