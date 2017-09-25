@@ -1,0 +1,79 @@
+################################################################################
+-----
+- 1 -
+-----
+
+S  ->  A
+
+A  -> id : array(cte .. cte) of integer := (X);
+
+X  -> E | L
+
+E  -> E , cte | cte
+
+L  -> L , F | L , others => cte | F
+
+F  -> cte => cte
+
+
+################################################################################
+-----
+- 2 -
+-----
+
+Si, esto es posible realizandolo en las acciones semánticas de la regla sintáctica de asignación.
+Al tener el token de límites y utilizar una variable "cont" que se incrementará cada vez que se
+ejecute la regla L -> L , F y/o L -> F se puede comprar si cont es mayor al límite (en ese caso se
+muestra un error por pantalla).
+
+
+################################################################################
+-----
+- 3 -
+-----
+
+a) Verdadero. El analizador lexicográfico solo devuelve un token en caso de que el lexema analizado "matchee" con una
+              de las expresiones regulares definidas. No inserta en tabla de símbolos ya que no conoce tipo, valor,
+              límites, si es variable o constante, etc.
+
+b) Falso. El analizador sintáctico es capaz de, en una acción semántica luego de analizar la regla de declaración y
+          contando ya con información tal como tipo de dato, nombre de símbolo, límites, etc, puede insertar el
+          consultar si el símbolo existe o no en tabla de símbolos. Si existe, arroja un error, sino lo inserta
+          en tabla de símbolos.
+
+
+################################################################################
+-----
+- 4 -
+-----
+
+0 --(T)--> 2 --(*)--> 8 --(F)--> 12 --(id)-->  A
+0 --(T)--> 2 --(*)--> 8 --(F)--> 12 --(cte)--> B
+0 --(T)--> 2 --(/)--> 9 --(F)--> 13 --(id)-->  C
+0 --(T)--> 2 --(/)--> 9 --(F)--> 13 --(cte)--> D
+
+Al analizar la tabla de parsing se puede ver que sentencias en donde a un factor le sigue un id o cte,
+se produde uno de los errores (A,B,C,D).
+Algunos ejemplos de estas sentencias:
+
+(2 + 2) * 4 a   ==> Error A
+(2 + 2) * 4 10  ==> Error B
+(2 + 2) / 4 a   ==> Error C
+(2 + 2) / 4 10  ==> Error D
+
+
+################################################################################
+-----
+- 5 -
+-----
+
+a = 0;
+i = 0
+while (i < 3) {
+  if (L[i] == V) {
+    a = i + 1;
+  }
+  i = i + 1;
+}
+
+Ver imágen del árbol sintáctico
