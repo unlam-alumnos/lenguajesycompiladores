@@ -56,10 +56,10 @@ Al analizar la tabla de parsing se puede ver que sentencias en donde a un factor
 se produde uno de los errores (A,B,C,D).
 Algunos ejemplos de estas sentencias:
 
-(2 + 2) * 4 a   ==> Error A
-(2 + 2) * 4 10  ==> Error B
-(2 + 2) / 4 a   ==> Error C
-(2 + 2) / 4 10  ==> Error D
+2 + 2 * 4 a   ==> Error A
+2 + 2 * 4 10  ==> Error B
+2 + 2 / 4 a   ==> Error C
+2 + 2 / 4 10  ==> Error D
 
 
 ################################################################################
