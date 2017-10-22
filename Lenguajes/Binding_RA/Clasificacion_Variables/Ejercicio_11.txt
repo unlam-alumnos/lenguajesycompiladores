@@ -1,0 +1,41 @@
+11. Sea la siguiente matriz entera:
+
+var Z: array [7..45,9..22] of integer;
+
+Si cada entero ocupa dos bytes y el comienzo de Z se encuentra en la dirección 3506C,
+qué componente se encuentra almacenado en la dirección 350B2.
+
+a) Si se encuentra organizada por filas.
+b) Si se encuentra organizada por columnas.
+
+#####################################################################################
+
+   6C - (7,9)
+   .
+   .    + 70 elementos (350B2 - 3506C)
+   .
+   B2 - ()
+
+Cantidad de filas   :  Fn - Fi = 45 - 7 = 38
+Cantidad de columnas:  Cn - Ci = 22 - 9 = 13
+
+
+a) Organizada por filas
+
+70 / 14 = 5
+
+(7,9)  +14
+(8,9)  +14
+(9,9)  +14
+(10,9) +14
+(11,9) +14
+(12,9) <------------------- Elemento en la dirección 350B2
+
+
+b) Organizada por columnas
+
+70 / 39 = 1,79  ==> 70 - 39 = 31
+
+(7,9)  +39
+(8,10) +31
+(39,10) <------------------ Elemento en la dirección 350B2
