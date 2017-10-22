@@ -1,0 +1,8 @@
+9. Se tiene un programa con un procedimiento cuyo registro de activación varía
+   de tamaño en diferentes ejecuciones. ¿Qué puede deducir de este lenguaje?
+
+Si el registro de activación del procedimiento es de tamaño variable entre
+ejecuciones significa que contienen variables semidinámicas.
+Las variables semidinámicas son arreglos (vectores o matrices) que tiene sus
+límites definidos en tiempo de ejecución, por lo que poseen descriptores
+(punteros a datos).
