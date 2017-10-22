@@ -1,0 +1,157 @@
+4) De acuerdo al siguiente segmento de código:
+
+Prog A
+      var a: integer
+      Prog B
+            var b: integer
+            Prog C
+                  var c, d: integer
+                  ------------------------------------------------------------> (1)
+                  Prog D
+                        var d: integer
+                        ------------------------------------------------------> (2)
+                        Prog E
+                        -
+                        End E
+                  -
+                  End D
+            -
+            End C
+      -
+      End B
+      Prog F
+            var f: float
+            ------------------------------------------------------------------> (3)
+            Prog H
+            -
+            End H
+      -
+      End F
+      Prog G
+            Prog I
+                  var I: float
+                  ------------------------------------------------------------> (4)
+                  Prog J
+                  -
+                  End J
+            -
+            End I
+      -
+      End G
+-
+End A
+
+Asumiendo alcance estático:
+
+1. Indicar quién puede llamar a quién.
+2. Construir el árbol de anidamiento del programa.
+3. Hacer un listado completo de todos los posibles llamados en los que el puntero
+   de la cadena estática coincide con el puntero de la cadena dinámica.
+4. Cuáles son las variables visibles en los puntos indicados
+
+NOTA:
+Se entiende por llamado:    A->B     (un solo llamado)
+Se entiende por secuencia de llamados:  A->B->C  (mas de un llamado)
+
+####################################################################################
+
+1.
+
+  { A
+    { B
+      { C
+        { D
+          { E
+
+          }
+        }
+      }
+    }
+    { F
+      { H
+
+      }
+    }
+    { G
+      { I
+        { J
+
+        }
+      }
+    }
+  }
+
++---+---+---+---+---+---+---+---+---+---+---+
+| \ | A | B | C | D | E | F | G | H | I | J |
++---+---+---+---+---+---+---+---+---+---+---+
+| A | R | L | X | X | X | L | L | X | X | X |
++---+---+---+---+---+---+---+---+---+---+---+
+| B | 2 | R | L | X | X | X | X | X | X | X |
++---+---+---+---+---+---+---+---+---+---+---+
+| C | 3 | 2 | R | L | X | X | X | X | X | X |
++---+---+---+---+---+---+---+---+---+---+---+
+| D | 4 | 3 | 2 | R | L | X | X | X | X | X |
++---+---+---+---+---+---+---+---+---+---+---+
+| E | 5 | 4 | 3 | 2 | R | X | X | X | X | X |
++---+---+---+---+---+---+---+---+---+---+---+
+| F | 2 | 1 | X | X | X | R | 1 | L | X | X |
++---+---+---+---+---+---+---+---+---+---+---+
+| G | 2 | 1 | X | X | X | 1 | R | X | L | X |
++---+---+---+---+---+---+---+---+---+---+---+
+| H | 3 | 2 | X | X | X | 2 | 2 | R | X | X |
++---+---+---+---+---+---+---+---+---+---+---+
+| I | 3 | 2 | X | X | X | 2 | 2 | X | R | L |
++---+---+---+---+---+---+---+---+---+---+---+
+| J | 4 | 3 | X | X | X | 3 | 3 | X | 2 | R |
++---+---+---+---+---+---+---+---+---+---+---+
+
+
+2.
+    B - C - D - E
+  /
+A - F - H
+  \
+    G - I - J
+
+
+3.
+
+  A -> B -> C -> D -> E
+  A -> F -> H
+  A -> G -> I -> J
+
+  Estos son los únicos casos ya que, para que los punteros de la cadena
+  estática y la cadena dinámica coincidan en cada registro de activación, los
+  llamados deben ser entre unidades padre - hija.
+
+
+4.
+
+  { A - a
+    { B - b
+      { C - c, d
+        { D - d
+          { E
+
+          }
+        }
+      }
+    }
+    { F - f
+      { H
+
+      }
+    }
+    { G
+      { I - i
+        { J
+
+        }
+      }
+    }
+  }
+
+(1) - a, b, c, d
+(2) - a, b, c, d
+(3) - a, f
+(4) - a, i
