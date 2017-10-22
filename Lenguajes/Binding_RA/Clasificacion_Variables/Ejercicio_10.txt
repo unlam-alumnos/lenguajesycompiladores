@@ -1,0 +1,31 @@
+10. Sea la siguiente matriz entera:
+
+var Z: array [7..45,9..22] of integer;
+
+a) ¿Cuáles de los números  7, 45, 9 y 22 deben almacenarse en el registro de activación?.
+   ¿En qué otro lugar puede almacenarse?.
+
+b) Ídem si la variable es semidinámica.
+
+################################################################################
+
+a) Variables Semiestáticas
+
+Una matriz cuyo límite se conoce en compilación. Los límites se guardan en el código.
+* Si NO verifica límites:
+    * Organizado por filas: Fi, Ci, Cn
+    * Organizado por columnas: Ci, Fi, Fn
+* Si verifica límites:
+    * Organizado por filas: Fi, Fn, Ci, Cn
+    * Organizado por columnas: Fi, Fn, Ci, Cn
+
+
+b) Variables Semidinámicas
+
+Una matriz cuyo límite NO se conoce en compilación. Los límites se guardan en el descriptor.
+* Si NO verifica límites:
+    * Organizado por filas: Fi, Ci, Cn
+    * Organizado por columnas: Ci, Fi, Fn
+* Si verifica límites:
+    * Organizado por filas: Fi, Fn, Ci, Cn
+    * Organizado por columnas: Fi, Fn, Ci, Cn
