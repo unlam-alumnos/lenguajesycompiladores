@@ -1,0 +1,21 @@
+1) Clasifique en semántica, pragmática y sintáctica cada una de las siguientes afirmaciones:
+
+a) El lenguaje C permite pasaje de parámetros por referencia.
+b) El compilador ANSI C produce ejecutables mas lentos que el mismo de Borland.
+c) La potencia en TURBO PASCAL se indica con el símbolo “^” entre la base y el exponente.
+d) En el lenguaje Fortran no se puede escribir más de una sentencia por renglón.
+e) En PL/I las variables se pueden declara antes o después de su primer uso.
+f) Las variables long double de C++ de Linux son tan rápidas como las double.
+g) Las variables de Basic son todas globales.
+
+###############################################################################################
+
+Teniendo en cuenta las siguientes consideraciones:
+
+*  Sintáctica:  Relación entre tokens, dado en las reglas
+*  Semántica :  Acciones de cada regla
+*  Pracmática:  Ejecución del codigo assembler generado para la regla
+
+*  Sintáctica: c, d
+*  Semántica : e
+*  Pracmática: a, b, f, g 
