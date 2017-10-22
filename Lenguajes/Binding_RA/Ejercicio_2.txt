@@ -1,0 +1,18 @@
+2) Sea el siguiente fragmento de programa, en un lenguaje determinado:
+
+var1 = 205
+var2 = 10
+var3 = 1024
+var2 = 205
+var1 = “diez”
+
+a) ¿Qué puede deducir del lenguaje en que se han escrito las instrucciones anteriores?
+b) ¿Qué ocurre si se ejecuta var1 = var2 + var3 ?
+
+#######################################################################################
+
+a) Se puede ver que se trata de un lenguaje de tipo dinámico ya que la parte izquierda de la
+   asignación toma el tipo del componente del lado derecho de la misma.
+
+b) Al ser un lenguaje de tipo dinámico al ejecutar var1 = var2 + var3, var1 cambiará su tipo
+   al del componente resultado var2 + var3.
