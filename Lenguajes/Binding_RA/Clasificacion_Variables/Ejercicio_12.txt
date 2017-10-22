@@ -1,0 +1,43 @@
+12. Indique si las siguientes afirmaciones son verdaderas o falsas. Explicar por qué.
+
+a) El tiempo de vida de una variable declarada en un programa en lenguaje Pascal,
+   sin llamadas a procedimientos ni funciones, coincide siempre con su alcance.
+
+b) Una variable declarada en C ó C++ como static posee almacenamiento y alcance estáticos.
+
+c) Si una variable definida en el interior de un bloque de “C” {} contiene una inicialización,
+   por ejemplo,  int x = 3; la misma se ejecuta cada vez que comienza el bloque.
+
+d) Un bloque anónimo en C genera un nuevo registro de activación.
+
+e) El lenguaje C utiliza descriptores para almacenar los límites de sus vectores.
+
+f) Pascal incorpora chequeo de límites en el código ejecutable de sus programas.
+
+g) ADA y ALGOL conocen los límites de todos sus vectores en tiempo de compilación.
+
+################################################################################################
+
+a) 
+
+b) Verdadero. La palabra reservada static le indica al compilador que esa variable se almacenará
+              en una posición fija de memoria y su alcance no se modificará durante la ejecución.
+
+c) Falso.     En C, todo código entre llaves { } no podrá ser invocado nuevamente ya que se trata de una
+              unidad anónima, por lo que la declaración de la variable x solo será ejecutada una vez.
+              En caso de querer hacer una llamada recursiva se debe insertar esta instrucción en una
+              unidad con nombre.
+
+d) Verdadero. El RA indica el alcance de las variables definidas en el bloque anónimo. A su vez,
+              este último debe contener un puntero al que lo invocó (cadena dinámica) para saber donde
+              continuar la ejecución cuando su procesamiento haya finalizado,
+              así como también un puntero al padre (cadena estática) para utilizar variables no locales
+              que si se encuentran a su alcance.
+
+e) Falso.     El lenguaje C no permite límites en sus arreglos que no sean conocidos en tiempo de compilación.
+
+f) Verdadero. Pascal arroja un error de "fuera de rango" en tiempo de ejecución en caso de no respetar
+              los límites del arreglo.
+
+g) Falso.     Permiten definir variables semidinámicas en donde el tamaño de los vectores se conozcan en
+              tiempo de ejecución.
