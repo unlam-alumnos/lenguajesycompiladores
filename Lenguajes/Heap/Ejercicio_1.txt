@@ -1,0 +1,44 @@
+1. Se tienen las siguientes funciones en ALGOL:
+
+a)
+
+  program main
+    int c
+    int d
+    procedure zz
+      ref int a
+      ref int b
+      begin
+        a := b
+      end
+    ........
+  end
+
+b)
+
+  program main
+    ref int a
+    int b
+    procedure xx
+      int c
+      begin
+        a := c
+      end
+    ........
+  end
+
+¿Es posible violar la regla de alcance de ALGOL con las funciones ZZ y XX?. Justificar
+
+################################################################################
+
+Las siguientes asignaciones violan la regla de alcance de ALGOL:
+
+a)
+    *  a = c
+    *  a = d
+    *  b = c
+    *  b = d
+
+b)
+    *  c = a
+    *  c = b
