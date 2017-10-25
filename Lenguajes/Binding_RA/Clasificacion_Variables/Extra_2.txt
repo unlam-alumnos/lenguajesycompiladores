@@ -1,0 +1,146 @@
+A() {
+  int a
+  int b
+  printf("Inserte límite inferior: ");
+  read a
+  printf("Inserte límite superior: ");
+  read b
+  call B
+
+  B() {
+    int vec[a..b]
+    vec[3] = 30
+  }
+}
+
+- vec es una variable semidinámica.
+Completo: pila, cadenas, variables, etc.
+
+################################################################################
+
+Fórmula de acceso a un elemento del vector:
+
+   v(j) = dir[v(Li)] + (j - Li) * tamaño_de_componente
+
+Esta fórmula se inserta en el código intermedio generado en la acción semántica
+de la regla id[cte] = cte, junto con la comprobación de límites correspondiente
+
+Cadena de llamados: A -> B
+
+Secuencia de eventos: (se asume que B es hijo de A)
+
+1. La unidad A se carga en la pila (CE = null, CD = null)
+2. Las variables estática "a" y "b" toman valor
+3. La unidad B se carga en la pila (CE = A, CD = A)
+4. Se crea un descriptor (puntero) en B que apunta a la variable "a" en A
+5. Se crea un descriptor (puntero) en B que apunta a la variable "b" en A
+
+################################################################################
+
+Generación de código intermedio:
+
+// vec[3] = 30
+H -> ID[IX] = CTE {
+      pol(obtenerValorDeDescriptor("_a"));                // -> (1)
+      pol(obtenerValorDeDescriptor("_b"));                // -> (2)
+      pol("CMP");
+      pol("BLT");
+      pol("9");
+      pol("printf");
+      pol("Vector fuera de rango");
+      pol("exit 1");
+      pol("insert_in_vec("_a", ix, cte, sizeof(cte))"); // -> (3)
+}
+
+(1) & (2) - Obtengo los valores de su correspondiente descriptor, en tiempo de ejecución
+(3)       - Se traduce a la fórmula de acceso de un vector unidimensional
+
+################################################################################
+
++- A
+| b
+| a
+| +- B
+| | vec
+| +-
++-
+
++---+---+---+
+| \ | A | B |
++---+---+---+
+| A | R | L |
++---+---+---+
+| B | 2 | R |
++---+---+---+
+
+################################################################################
+
+Código assembler:
+
+- Tamaño de variables enteras: 16 bytes
+- Offsets:
+            Cadena dinámica = 32
+            Cadena estática = 16
+            A.a             = 48
+            A.b             = 64
+            B.vec           = 48
+
+Suponiendo la ejecución del programa con un valor para "a" de 1 y "b" de 3
+
+                +---------------------+
+                | b                   |
+                | a                   |
+                |       > A <      CD |
+                | CE                  |
+BP -----------> +---------------------+
+
+// Cadena dinámica B -> A
+
+MOV R1    , BP         // Resguarda BP de A
+ADD BP    , tam(A)     // Crea el RA (B)
+MOV BP+32 , R1         // Crea la cadena dinámica B -> A
+
+                +---------------------+
+                | v                   |
+                | e     > B <         |
+                | c                   |
+                |                  CD +----+
+                | CE                  |    |
+BP -----------> +---------------------+    |
+                | b                   |    |
+                | a                   |    |
+                |       > A <      CD |    |
+                | CE                  |    |
+                +---------------------+<---+
+
+
+// Cadena estática B -> A
+
+MOV R1    , BP         // Resguarda BP de B
+MOV BP    , BP+32      // Baja por cadena dinámica a A
+MOV R1+16 , BP         // Crea la cadena estática B -> A
+MOV BP    , R1         // Vuelvo BP a la base de B
+
+                +---------------------+
+                | v                   |
+                | e     > B <         |
+                | c                   |
+                |                  CD +----+
+           +----+ CE                  |    |
+BP ------> |    +---------------------+    |
+           |    | b                   |    |
+           |    | a                   |    |
+           |    |       > A <      CD |    |
+           |    | CE                  |    |
+           +--->+---------------------+<---+
+
+// vec[3] = 30  -  (v(j) = dir[v(Li)] + (j - Li) * tamaño_de_componente)
+
+MOV R2    , BP         // Resguarda BP de B
+MOV R1    , @ix        // Resguardo ix (3) en R1
+MOV BP    , BP+32      // Bajo por la cadena estática a A
+SUB R1    , BP+48      // Resto "a" (limite inferior)
+MUL R1    , 16         // Multiplico por el tamaño de un int
+ADD R1    , R2+48      // Suma final de acceso al vector en posición "ix"
+MOV R1    , @cte       // Inserto el valor constante en la posición del vector
+MOV BP    , R2         // Vuelvo a la base de B
