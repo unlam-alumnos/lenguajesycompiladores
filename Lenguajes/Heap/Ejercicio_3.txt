@@ -1,0 +1,52 @@
+3. Suponga que la administración del heap del lenguaje del siguiente ejemplo se
+   basa en la existencia de  contadores de referencia.
+
+   a) ¿Cuáles de las siguientes asignaciones afectan dichos contadores y de qué manera?.
+      Muéstrelo gráficamente
+
+   b) ¿Dónde están ubicados los mismos?
+
+   c) ¿Existe garbage? ¿Dónde?
+
+   d) ¿Existe dangling reference? ¿Dónde?
+
+
+1.   int a,b;
+2.   int *pa, *pb, *pc, *pd;
+3.   pa = &a;
+4.   pb = &b;
+5.   pc = (int *) malloc (sizeof (int));
+6.   pd = (int *) malloc (sizeof (int));
+7.   pa = pc;
+8.   pd = pb;
+
+
+## Comentarios por linea
+
+a) b)
+
+1. Declaración de dos variables enteras. Se almacenan en la pila.
+2. Declaración de cuatro variables enteras. Los punteros se almacenan en la pila.
+3. pa apunta a la variable a (todo esto dentro de la misma pila)
+4. pb apunta a la variable b (todo esto dentro de la misma pila)
+5. Se reserva memoria en el Heap. El puntero pc apunta a esa dirección de memoria.
+      |
+      +--> El contador de referencia de la posición de memoria es 1.
+6. Se reserva memoria en el Heap. El puntero pd apunta a esa dirección de memoria.
+      |
+      +--> El contador de referencia de la posición de memoria es 1.
+7. pa pasa a apuntar a lo que apunta pc.
+      |
+      +--> El contador de referencia de la dirección de memoria que apunta pc
+           pasa a ser 2.
+8. pd pasa a apuntar a lo que apunta pb.
+      |
+      +--> El contador de referencia de la dirección de memoria a la que apuntaba pd
+           pasa a ser 0 y es movida a la lista de Libres.
+
+
+c) No existe garbage ya que este método de "recolección de basura" no recoge basura en sí,
+   sino que no permite que se genera. También puede decirse que recoge basura "en linea".
+
+d) En este ejemplo no hay ninguna sentencia que libere espacio de memoria, por lo tanto
+   no hay posibilidad de dangling reference.
