@@ -1,0 +1,71 @@
+2. Marque con una cruz las instrucciones que fabrican garbage, fragmentación
+   y punteros apuntando a basura (dangling reference)
+   Explique en cada caso por qué.
+   Dibujar en cada caso como queda organizado el heap y los punteros
+
+
+a)
+                                  +---------+---------------+---------------+
+                                  | GARBAGE | FRAGMENTATION | DANGLING REF. |
++---------------------------------+---------+---------------+---------------+
+|   int *x, *y, *z, *w;           |         |               |               |
+|   x = (int*) malloc (50);       |         |               |               |
+|   y = (int*) malloc (100);      |         |               |               |
+|   z = (int*) malloc (150);      |         |               |               |
+|   w = (int*) malloc (200);      |         |               |               |
+|   x = y;                        |   (1)   |               |               |
+|   free (y);                     |         |     (2)       |     (3)       |
+|   x = (int*) malloc (150);      |         |               |               |
++---------------------------------+---------+---------------+---------------+
+
+    (1) - x pasa a apuntar a la posición de memoria a donde apunta y, esto
+          deja la sección del heap a la que apuntaba x anteriormente inaccesible.
+
+    (2) - Al hacer un free(y) se libera espacio en el heap, el cual deja un "hueco"
+          en la memoria, se deberá ejecutar un algoritmo de compactación.
+
+    (3) - Luego de hacer free(y), el puntero x sigue apuntando a un sector de
+          memoria que ha sido liberado.
+
+
+b)
+                                  +---------+---------------+---------------+
+                                  | GARBAGE | FRAGMENTATION | DANGLING REF. |
++---------------------------------+---------+---------------+---------------+
+|   char *a, *c, *d; int *b;      |         |               |               |
+|   a = (char*) malloc (50);      |         |               |               |
+|   b = (int*) malloc (100);      |         |               |               |
+|   c = (char*) malloc (150);     |         |               |               |
+|   d = (char*) malloc (200);     |         |               |               |
+|   free (a);                     |         |      (1)      |               |
+|   free (b);                     |         |      (2)      |               |
+|   a = (char*) malloc (250);     |         |               |               |
++---------------------------------+---------+---------------+---------------+
+
+    (1)(2) - Al hacer un free(a) y free(b) se libera espacio en el heap,
+             el cual deja un "hueco" en la memoria, se deberá ejecutar un
+             algoritmo de compactación.
+
+
+ c)
+                                   +---------+---------------+---------------+
+                                   | GARBAGE | FRAGMENTATION | DANGLING REF. |
+ +---------------------------------+---------+---------------+---------------+
+ |   char *a, *c, *d; *b;          |         |               |               |
+ |   a = (char*) malloc (50);      |         |               |               |
+ |   b = (char*) malloc (100);     |         |               |               |
+ |   c = (char*) malloc (150);     |         |               |               |
+ |   d = (char*) malloc (200);     |         |               |               |
+ |   c = d                         |   (1)   |               |               |
+ |   free (c);                     |         |      (2)      |      (3)      |
+ |   c = (char*) malloc (150);     |         |               |               |
+ +---------------------------------+---------+---------------+---------------+
+
+     (1) - c pasa a apuntar a la posición de memoria a donde apunta d, esto
+           deja la sección del heap a la que apuntaba c anteriormente inaccesible.
+
+     (2) - Al hacer un free(c) se libera espacio en el heap, el cual deja un "hueco"
+           en la memoria, se deberá ejecutar un algoritmo de compactación.
+
+     (3) - Luego de hacer free(c), el puntero d sigue apuntando a un sector de
+           memoria que ha sido liberado.
