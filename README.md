@@ -15,14 +15,14 @@
 ```bash
 git clone https://github.com/unlam/lenguajesycompiladores.git
 cd lenguajesycompiladores
-cd Flex&Bison/Ejemplo1
+cd Compiladores/Flex&Bison/Ejemplo1
 python ejemplo.py
 ```
 
 ### Ejecutando un Ejemplo de Assembler
 
 ```bash
-cd GCI/Extra_1_AVG
+cd Compiladores/GCI/Extra_1_AVG
 python assembler.py
 ```
 
