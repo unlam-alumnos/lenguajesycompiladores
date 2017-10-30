@@ -1,0 +1,29 @@
+Notas del examen de las fotos
+Nota: 7- (Siete)-
+1: B
+2: B-
+3: B
+4: R
+5: B-
+
+En la revisión:
+4: R, estaba mal corregido, por lo cual sería Bien y tendría un 9 (Nueve), no se modificó la nota ya que no cambiaba la condicion de final.
+
+1: Sin correcciones
+2: La correccion decía: 
+	Abajo de todo decia: ¿Y la compactacion?
+	Segun la consulta en la revision, todos los algoritmos de GC en lenguajes tipo ALGOL compactan luego de realizar la recoleccion, x lo cual lo asumido estaba mal.
+		Está mal nombrado lo de GC en estos lenguajes, xq sea cual sea el algoritmo a usar (Marcado y barrido, Contador, etc) incluye la compactacion luego, es un paquete entero en lenguajes tipo ALGOL.
+		Segun Pomar, en el apunte lo dice, ya que especifica que los algoritmos de limpieza no hacen compactacion en sí, pero en lenguajes ALGOL se hace luego siempre.
+		En estos lenguajes, la fragmentacion solamente existe cuando se hacen Free's, ya que el GC compacta de una.
+		Por lo cual en este ejercicio no habia fragmentacion en ningun momento, segun él y la jefa.
+		Eso tendría que haberme anotado que estaba mal y tendría que haberme bajado un punto mas, pero quedó todo ahi.
+3: Sin correcciones
+4: La correccion decía:
+	El -14 tachado y decía -10 o -20 (no se entendía la letra) como resultado final.
+	Era el punto que corrigió mal a muchos y se olvido de arreglarlo en el mio. El resultado era correcto, era -14 y el punto estaba Bien.
+5: La correccion decía:
+			a) Mal, *x = &z, esto hace 0 dereferencing del lado derecho y del lado izquierdo no se cuentan.
+			b, c y d) Bien
+
+Consultado sobre notas, para el 7 (siete) necesitabas 4 ejercicios Bien y para el 4 (cuatro) necesitabas 3 ejercicios Bien

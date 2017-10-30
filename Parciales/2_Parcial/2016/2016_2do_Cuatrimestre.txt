@@ -1,0 +1,30 @@
+1 - Dados:
+
+int** z,d;
+int* b,g;
+int a,b;
+
+Decir si es posible o no hacer las siguientes asignaciones bajo estas condiciones en lenguaje 'C' y justificar. Las variables pueden estar en cualquier lado de la asignacion (EJ: d=e o e=d).
+
+a) Asignacion entre a y z donde no exista desreferencing 	(RTA: Es posible, *z=&a (saco desreferencing implicito de C con "&"))
+b) Asignacion entre z y g donde no exista desreferencing	(RTA: No es posible, siempre habra desreferencing implicito )
+c) Asignacion entre ? y ? no exista casteo pero si desreferencing  (RTA: No me acuerdo como ni cuales, pero se podia.)
+d) Asignacion entre z y d donde exista casteo y desreferencing. 	(RTA: No es posible, al ser ambos doble puntero si hago un casteo tengo incompatibilidad de tipos)
+
+
+2 - Igual al ejercicio 5 de la guia de HEAP. Grafico de punteros y datos del que preguntaba si quedaba garbage por marcado y barrido local si se borraba un nodo y su referencia a otro.Despues, la misma pregunta si se borraba otro de los punteros de arriba. Facil.
+
+3- Armar el arbol de dependencia de funciones/procedimientos basado en la tablita de local, global1,global2, recursivo,etc. Facil.
+
+
+4- Indicar si el numero "0101.000000100101" vale exactamente lo mismo en IEEE que en BCD.
+
+(RTA: Falso, IEEE pierde exactitud. Hacer la cuentita.)
+
+
+5- Es posible pasar func(vect[i]) por parametro a una funcion? Elegir la respuesta y justificar (Podian ser ninguna, una o mas de una)
+a) Se puede por referencia.	(RTA: Verdadero, pero solo en el caso de que el indice tenga valor constante al momento de pasarlo a la funcion y sepa a que indice del vector debe hacer referencia.)
+b) Se puede por nombre.		(RTA: Verdadero, y no es necesario que que el indice tenga valor al momento de pasarlo, al copiarse en THUNK tal cual esta, puede el indice puede tomar valor dentro de la funcion.)
+c) Se puede solo si i puede pasarse como indice de valor constante.	(RTA: Falso, si se pasa por nombre no es necesario que tenga valor la i antes.)
+d) No se puede.	(RTA: Falso, por lo explicado en a) y b))
+

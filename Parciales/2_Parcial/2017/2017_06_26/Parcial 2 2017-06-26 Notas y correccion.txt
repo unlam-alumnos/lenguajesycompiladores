@@ -1,0 +1,26 @@
+Notas del examen de las fotos
+Nota: 2 (Dos)
+1: M
+2: M
+3: M
+4: B
+5: B-
+
+1: La correccion decía: 
+			i) Mal, era Uniting
+			ii) Bien
+			iii) Bien
+			iv) Mal, no habia conversion sino que era un truncamiento, justificacion no valida. El valor final de A quedaba 5 y no 5,25, por el mismo truncamiento.
+			v) Mal, ya el lexico lo reconoce como un real y dsps es una operacion entre reales. No hay conversion.
+			vi) Mal, Idem.
+2: La correccion decía: Los parametros pasados por referencia se les asigna el Alias con el nombre de la variable puntero, por lo cual no forma parte del registro de activacion, no ocupan lugar.
+	x --> Alias: W, Z
+3: La correccion decía: El valor inicial y final estaba mal por asumir el valor sin truncamiento. No hace mal el punto ya que es un error de arrastre y no se puede evaluar en sí.
+	Lo que faltaba era la demostracion con la cuenta de la operacion y que quede asentado que quedaba periodico y ahi entra el tema de la precision de la IEEE. La justificacion con palabras no alcanzaba, ya que les estoy "contando" y no "justificando".
+4: Sin correcciones
+5: La correccion decía:
+			i) Subrayado la parte de "acceder a los metodos del padre"
+			ii) Una cruz a la derecha y no especificaba nada mas.
+			iii) Nada
+
+Consultado sobre notas, para el 7 (siete) necesitabas 4 ejercicios Bien y para el 4 (cuatro) necesitabas 3 ejercicios Bien
