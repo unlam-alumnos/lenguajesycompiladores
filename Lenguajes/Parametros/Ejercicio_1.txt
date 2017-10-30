@@ -1,0 +1,100 @@
+1. Para el siguiente fragmento de programa se pide decir que resultados arrojará
+   la ejecución si los parámetros son pasados por:
+      
+      a) referencia 
+      b) nombre 
+      c) copia valor 
+      d) copia resultado 
+      e) copia valor resultado 
+
+procedure p (x,y,z)  
+  begin   
+    y := y + 1;   
+    z := z + x;  
+  end  
+end 
+begin /* pgm. ppal */  
+  a := 2 ; 
+  b := 3;
+  p(a + b, a, a);  
+  print a       
+end
+
+################################################################################
+
+a) Referencia
+
+a: 2, 3, 7
+b: 3
+x: 5
+y: 2, 3
+z: 2, 7
+
+a = 7
+
+###################################
+
+b) Nombre
+
+Código del "thunk"
+
+procedure p (x,y,z)  
+  begin   
+    a := a + 1;   
+    a := a + a + b;  
+  end  
+end 
+begin /* pgm. ppal */  
+  a := 2 ; 
+  b := 3;
+  p(a + b, a, a);  
+  print a       
+end
+
+a: 2, 3, 9
+b: 3
+x: 
+y: 
+z: 
+
+a = 9
+
+###################################
+
+c) Copia Valor
+
+a: 2
+b: 3
+x: 5
+y: 2, 3
+z: 2, 7
+
+a = 2
+
+###################################
+
+d) Copia Resultado
+
+Se asume que el lenguaje inicializa sus variables en 0 por defecto
+
+a: 2
+b: 3
+x: 0
+y: 0, 1
+z: 0
+
+a = 0
+
+###################################
+
+e) Copia Valor Resultado
+
+Se asume que el lenguaje inicializa sus variables en 0 por defecto
+
+a: 2
+b: 3
+x: 5
+y: 2, 3
+z: 2, 7
+
+a = 7
