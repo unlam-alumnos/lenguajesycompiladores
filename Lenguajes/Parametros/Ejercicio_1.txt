@@ -24,13 +24,7 @@ end
 
 a) Referencia
 
-a: 2, 3, 7
-b: 3
-x: 5
-y: 2, 3
-z: 2, 7
-
-a = 7
+Al haber una expresión "a+b", referencia no puede ser usado
 
 ###################################
 
@@ -75,26 +69,10 @@ a = 2
 
 d) Copia Resultado
 
-Se asume que el lenguaje inicializa sus variables en 0 por defecto
-
-a: 2
-b: 3
-x: 0
-y: 0, 1
-z: 0
-
-a = 0
+Al haber una expresión "a+b", copia resultado no puede ser usado
 
 ###################################
 
 e) Copia Valor Resultado
 
-Se asume que el lenguaje inicializa sus variables en 0 por defecto
-
-a: 2
-b: 3
-x: 5
-y: 2, 3
-z: 2, 7
-
-a = 7
+Al haber una expresión "a+b", copia valor resultado no puede ser usado
