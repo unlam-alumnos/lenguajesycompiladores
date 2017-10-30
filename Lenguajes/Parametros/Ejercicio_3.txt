@@ -1,0 +1,69 @@
+3. Describir que es posible deducir de la sintaxis y la semántica de pasaje de 
+   parámetros para  los siguientes ejemplos:
+   
+a)
+  
+  int d = f(a,b,c,,h)
+  
+  Sintaxis: 
+    
+            El lenguaje admite pasaje de parámetros por posición con faltantes en
+            cualquier lugar
+            
+  Semántica:
+  
+            - No podría utilizarse pasaje de parámetros por Referencia ya que al
+              faltar un parámetro, dentro de la función "f" se tendría una referencia "nula".
+            - Tampoco podría ser por Nombre ya que al reemplazar en el thunk, el
+              lenguaje no tiene con que realizar dicho reemplazo
+            - Por Copia podría ser posible siempre y cuando en las de Valor, el 
+              lenguaje podría inicializar en 0 los parametros faltantes
+              
+              
+b)
+
+  int d = f(a as x, b as y)
+  
+  Sintaxis:
+  
+            El lenguaje admite pasaje de parámetros explícito
+            
+  Semántica:
+          
+            Admite cualquier tipo de pasaje de parámetros
+  
+            
+c)
+
+  int d = f(a+b, b-c)
+  
+  Sintaxis:
+  
+            El lenguaje admite pasaje de parámetros utilizando expresiones aritméticas.
+            
+  Semántica:
+          
+            - Al utilizar pasaje de parámetros por Nombre, las expreciones serán
+              reemplazadas en el "thunk".
+            - Si se utiliza cualquiera de los otros tipos de pasaje de parámetros,
+              ocurre lo siguiente:
+                - Referencia: Se considera a las expresiones como constantes, 
+                              las variables individuales no se verán afectadas.
+                - Resultado: No se realizará la copia del resultado en las variables
+                             de la unidad llamadora.
+
+d) 
+
+  int d = f(&a)
+  
+  Sintaxis:
+  
+            El lenguaje admite pasaje de parámetros utilizando "&" para indicar
+            que se trata de la referencia a la variable "a" la que es enviada. 
+            
+  Semántica:
+          
+            Por lo antes mencionado, se utiliza pasaje de parámetros por referencia.
+  
+      
+  
