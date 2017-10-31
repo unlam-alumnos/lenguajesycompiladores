@@ -1,0 +1,112 @@
+char **a;
+char *b;
+
+a --> (1) puntero a puntero a char --> (2) puntero a char --> (3) char
+b --> (4) puntero a char --> (5) char
+
+a) a = &b   -  (0 dereferencing)
+b) b = *a   -  (2 dereferencing)
+c) *a = b   -  (1 dereferencing)
+d) *a = b   -  (1 dereferencing)
+e) b = *a   -  (2 dereferencing)
+f) *b = **a -  (3 dereferencing)
+g) **a = *b -  (2 dereferencing)
+h) &b = a   -  (1 dereferencing) 
+
+Inicio
+------
+a = x
+b = y
+
+a) Hacer que 1 apunte a 4
+   -------------------------------
+    a1 = &b4; - (0 dereferencing) 
+   -------------------------------
+   a1 = y
+   a2 = x
+   a3 = x
+   b4 = y
+   b5 = y
+
+b) Hacer que 2 se copie en 4
+   ------------------------------
+    b4 = *a1; - (2 dereferencing) 
+   ------------------------------
+   a1 = x
+   a2 = x
+   a3 = x
+   b4 = x
+   b5 = y
+
+c) Hacer que 4 se copie en 2
+   -------------------------------
+    *a1 = b4; - (1 dereferencing) 
+   -------------------------------
+   a1 = y
+   a2 = y
+   a3 = x
+   b4 = y
+   b5 = y
+
+d) Hacer que 2 apunte a 5
+   -------------------------------
+    *a1 = b4; - (1 dereferencing) 
+   -------------------------------
+   a1 = y
+   a2 = y
+   a3 = x
+   b4 = y
+   b5 = y
+
+e) Hacer que 4 apunte a 3
+   -------------------------------
+    b4 = *a1; - (2 dereferencing) 
+   -------------------------------
+   a1 = x
+   a2 = x
+   a3 = x
+   b4 = x
+   b5 = y
+
+f) Copiar 3 en 5
+   ---------------------------------
+    *b4 = **a1; - (3 dereferencing) 
+   ---------------------------------
+   a1 = x
+   a2 = x
+   a3 = x
+   b4 = x
+   b5 = x
+
+g) Copiar 5 en 3
+   ---------------------------------
+    **a1 = *b4; - (2 dereferencing) 
+   ---------------------------------
+   a1 = y
+   a2 = y
+   a3 = y
+   b4 = y
+   b5 = y
+
+h) Copiar 1 en 4
+   No es posible copiar un >> puntero a puntero a char << dentro de un >> puntero a char <<
+
+###########################################################################################
+
+NOTA: Realizo lo siguiente para calcular los dereferencing:
+
+- Con * me muevo hacia la derecha (1 dereferencing cada uno)
+- Con & me muevo hace la izquierda (0 dereferencing, resta el implícito)
+- Los dereferencing del lado izquierdo no cuentan
+- Hay un dereferencing implícito a la derecha, siempre
+
+En caso de tener las conversiones del lado derecho implícitas (como en ALGOL):
+
+a) a = b   -  (0 dereferencing)
+b) b = a   -  (2 dereferencing)
+c) *a = b  -  (1 dereferencing)
+d) *a = b  -  (1 dereferencing)
+e) b = a   -  (2 dereferencing)
+f) *b = a  -  (3 dereferencing)
+g) **a = b -  (2 dereferencing)
+h) &b = a  -  (1 dereferencing) 
