@@ -1,0 +1,35 @@
+3) Sean las siguientes declaraciones escritas en C:  
+
+int a, b;  
+int *c, d;  
+int **e;  
+
+Indique a que valores referencian las variables después de las asignaciones que siguen. 
+En caso que la asignación sea inválida, indique por qué?
+En caso que sea válida indique el valor final y la cantidad de referencing en cada caso.  
+
+################################################################################
+
+a) 
+   a := 1;  - VALIDA   - (0 dereferencing)
+   c := a;  - INVALIDA - c es puntero a int, a es int. Asignación invalida por incompatibilidad.
+   b := c;  - INVALIDA - c es puntero a int, b es int. Asignación invalida por incompatibilidad.
+
+b) 
+   b := 5;  - VALIDA   - (0 dereferencing)
+   d := &b; - VALIDA   - (0 dereferencing)
+   e := &d; - VALIDA   - (0 dereferencing) 
+   a := **e - VALIDA   - (3 dereferencing) 
+   
+   Valor final => a = 5
+
+c) 
+   a := 3;  - VALIDA   - (0 dereferencing)
+   *d := a; - VALIDA   - (1 dereferencing)
+   e := a;  - INVALIDA - e es puntero a puntero a int, a es int. Asignación invalida por incompatibilidad.
+   b := e;  - INVALIDA - e es puntero a puntero a int, b es int. Asignación invalida por incompatibilidad.
+
+d) 
+   c := 1;  - INVALIDA - c es puntero a int, 1 es int. Asignación invalida por incompatibilidad.
+   e := c;  - INVALIDA - e es puntero a puntero a int, c es ptunero a int. Asignación invalida por incompatibilidad.  
+   a := e;  - INVALIDA - e es puntero a puntero a int, a es int. Asignación invalida por incompatibilidad.  
