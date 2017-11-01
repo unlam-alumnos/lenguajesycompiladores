@@ -18,3 +18,11 @@ Justifique esta afirmación.
 ¿Qué puede deducir del lenguaje?
 
 ################################################################################
+
+Le pregunté a Mara y me dijo que lo vea por el lado de que se ejecuta el código 
+en dos tipos de lenguajes distintos. Entonces, se dice que el primero tarda 
+mucho más porque se trata de un lenguaje dinámico (con intérprete, programa 
+semi traducido y tabla de símbolos). En cambio en la segunda ejecución, se trata 
+de un lenguaje estático o de tipo ALGOL.
+
+Ver Issue #12 en GitHub -> https://github.com/unlam/lenguajesycompiladores/issues/12
