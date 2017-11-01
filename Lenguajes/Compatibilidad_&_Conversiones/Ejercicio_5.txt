@@ -1,0 +1,46 @@
+5) Dadas las siguientes definiciones de tipos, subtipos, y declaración de variables, 
+   pruebe y analice para cada una de los puntos referenciados.
+   
+with Gnat.IO; use Gnat.IO;
+
+procedure Conversiones is
+  type COLOR is (WHITE, RED, GREEN, BLUE, YELLOW, BROWN, BLACK);
+  type RGB is new COLOR range RED..BLUE;
+  type SMALLINT is new INTEGER range -1000..1000;
+  subtype PAGENUMBER is SMALLINT range 0..100;
+  windowColor: COLOR;
+  lineColor: RGB;
+  page: PAGENUMBER;
+  interval: SMALLINT;
+  length, marginRight: FLOAT;
+  
+  begin
+    lineColor:= RGB(windowColor);                                  --1
+    page:= PAGENUMBER(Integer(length)/25);                         --2
+    interval:= SMALLINT(page);                                     --3
+    page:= PAGENUMBER(interval);                                   --4
+    marginRight:= FLOAT(interval*page-PAGENUMBER(length/0.698));   --5
+    interval:= page;                                               --6
+    interval:= PAGENUMBER(INTEGER(length)/25);                     --7
+    page:= 100;                                                    --8
+    interval:= page + 1;                                           --9
+    interval:= page + 10000;                                       --10
+  end Conversiones;
+
+a) Los tipos de conversiones efectuadas (numérica o de tipos derivados).
+b) En qué casos las conversiones no producen error en tiempo de compilación, 
+   pero sí en tiempo de ejecución
+
+################################################################################
+
+1) No falla en compilación pero si en ejecución ya que windowColor no fue inicializado
+   y se lo considera fuera de rango.
+   Para solucionarlo:
+   
+      windowColor := RED;
+
+10) No fall en compilación pero si en ejecución ya que la constante entera 10000, 
+    al sumarle los 100 que ya tenía "page" sobrepasa el rango de SMALLINT (-1000 a 1000).
+    Para solucioanrlo:
+    
+      interval := page + 900;
