@@ -1,8 +1,0 @@
-a) Solo A es pasado a la lista de bloques libres ya que los demás tienen su contador
-   en 1 (F pasa de 2 a 1 luego de liberar A) por la referencia cíclica entre ellos.
-
-b) Todos los elementos menos A, ya que poseen referencias cíclicas.
-
-c) - C,F,G,H podrían ser detectados por la técnica de "marcado y barrido"
-   - B,D,E permanecen como utilizados por ser E apuntado desde la pila, B por ser
-           apuntado por E, y D por ser apuntado por B.
