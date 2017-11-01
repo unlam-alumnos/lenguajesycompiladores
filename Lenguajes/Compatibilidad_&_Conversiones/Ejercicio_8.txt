@@ -1,0 +1,49 @@
+with Ada.Text_IO; use Ada.Text_IO;
+with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
+
+procedure reg_var is
+    type FIGURA is (circulo,triangulo,rectangulo);
+    type objeto (FORMA: FIGURA:=triangulo) is
+    record
+        case FORMA is
+            when circulo => diametro : float;
+            when triangulo => ladoizq : integer; ladoder : integer; angulo : float;
+            when rectangulo => lado1 : integer; lado2 : integer;
+        end case;
+    end record;
+    a: objeto; -- registro libre
+    c: objeto (circulo); -- registro congelado
+    r: objeto (FORMA => rectangulo); -- registro congelado
+    r1: objeto (FORMA => rectangulo);
+    t: objeto (FORMA => triangulo);
+    lado:integer;
+begin
+--1 a:= (FORMA => triangulo, ladoizq => 10, ladoder => 20, angulo => 45.00);
+--2 t:= a;
+--3 t:= (FORMA => triangulo, ladoizq => 43, ladoder => 53 );
+--4 t:= (FORMA => triangulo, 45,12,0.45);
+--5 c:= (FORMA => rectangulo, lado1 => 100, lado2 => 50);
+--6 c:= (diametro => 35.4 );
+--7 c:= (FORMA => circulo, diametro =>4.9);
+--8 r:= (FORMA => rectangulo, lado1 => 100, lado2 => 50);
+--9 r1 := r;
+--10 lado:=r.lado1;
+--11 Put_Line ("lado es: ");Put(lado);
+end reg_var;
+
+################################################################################
+
+3) El atributo "angulo" no es provisto en la asignación.
+
+4) ADA no soporta asociación posicional cuando espera atributos por nombre
+
+5) Falla porque "c" ya es una unión con discriminante "circulo", no puede cambiar.
+
+6) El discriminante "FORMA" no es provisto en la asignación.
+
+Conclusión
+----------
+
+ADA es un lenguaje que provee uniones "seguras" donde se debe indicar siempre el 
+discriminante y todos sus atributos; y no se podrán modificar atributos que no 
+correspondan al discriminante asignado.
