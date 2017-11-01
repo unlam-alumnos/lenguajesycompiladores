@@ -1,0 +1,51 @@
+4) Dado el siguiente segmento de código Ada indique para cada asignación (señalizada con números): 
+¿Qué errores se producen en tiempo de compilación y por qué? 
+Realice las conversiones necesarias para llevar a cabo la asignación. 
+
+procedure Conversiones is       
+  subtype smallFloat is Float range 0.0..10.0;  
+  type smallsmallFloat is new Float range 0.0..10.0;    
+  area, coeficiente, promedio, total : Float;   
+  suma, cantidad                     : Integer;   
+  caracter                           : character;   
+  pi                                 : constant := 3.14159_26536; 
+  radio                              : smallFloat;  
+  radio1                             : smallsmallFloat;     
+begin  
+  cantidad := coeficiente + promedio * 2.85;        -- 1    
+  suma := (cantidad - 15.7) + suma;                 -- 2   
+  promedio := suma / cantidad;                      -- 3   
+  cantidad := caracter;                             -- 4   
+  area := pi * (radio * radio);                     -- 5   
+  area:= smallsmallFloat (pi) * (radio1 * radio1);  -- 6    
+end Conversiones; 
+  
+################################################################################
+
+1 - Operaciones con Float donde se espera un Integer
+
+    cantidad := Integer(coeficiente + promedio * 2.85);
+
+
+2 - 15.7 es Float, se esperaba un Integer
+
+    suma := (cantidad - Integer(15.7)) + suma;
+    
+    
+3 - suma / cantidad es Integer, se espera un Float
+
+    promedio := Float(suma / cantidad);
+
+
+4 - Incompatibilidad de tipos, se espera Integer, se provee character.
+    No es posible realizar una conversión en este caso.
+
+    
+5 - Ningun problema con esta asignación
+
+
+6 - Operaciones entre smallsmallFloat, se debe convertir a Float
+
+    area:= Float(smallsmallFloat (pi) * (radio1 * radio1));
+
+  
