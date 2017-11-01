@@ -1,0 +1,20 @@
+Resultado:
+
+1
+323
+67
+5
+99
+6633
+-94676.0
+
+Rta: Java provee una conversión implícita llamada "narrowing" el cual es lo contrario a
+     "widening", por lo que se pueden realizar este tipo de asignaciones:
+     
+        int i;
+        double d;
+        i = d;     // Se pierde presición, lo cual es peligroso
+        
+    En cuanto al char "c", al asignarlo a una variable entera, esta toma el valor entero
+    del caracter. 99 en este caso. Lo mismo ocurre con el float y el double.    
+    
