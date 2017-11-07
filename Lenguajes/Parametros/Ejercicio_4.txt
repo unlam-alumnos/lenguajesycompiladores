@@ -1,34 +1,34 @@
 4. Dado el siguiente programa:
 
- program PARCIALITO;  
- a: array[1 ..3] of integer;  
- i: integer;   
-    procedure PARAMETROS (x, y: integer);   
-    begin  
-        i = i + 1;    
-        x = x + 1;    
-        printf(“i = “, i, ”x = ", x, ”y = “, y);   
-    end  
-begin   
-    i = 1;    
-    a[1] = 2; 
-    a[2] = 3; 
-    a[3] = 4;   
-    PARAMETROS (i, a[i]);   
-    printf(“i= “, i, ”a[“,i,”] = “, a[i]);  
-end.  
+ program PARCIALITO;
+ a: array[1 ..3] of integer;
+ i: integer;
+    procedure PARAMETROS (x, y: integer);
+    begin
+        i = i + 1;
+        x = x + 1;
+        printf(“i = “, i, ”x = ", x, ”y = “, y);
+    end
+begin
+    i = 1;
+    a[1] = 2;
+    a[2] = 3;
+    a[3] = 4;
+    PARAMETROS (i, a[i]);
+    printf(“i= “, i, ”a[“,i,”] = “, a[i]);
+end.
 
-Deduzca el tipo de pasaje de parámetros utilizado, en cada inciso, si los resultados son: 
+Deduzca el tipo de pasaje de parámetros utilizado, en cada inciso, si los resultados son:
 
-a) i = 3  x = 3  y = 4 
-   i = 3  a[3] = 4   
-   
-b) i = 3  x = 3  y = 2 
-   i = 3  a[3] = 4  
-   
-c) i = 2  x = 2  y = 2 
-   i = 2  a[2] = 3 
-   
+a) i = 3  x = 3  y = 4
+   i = 3  a[3] = 4
+
+b) i = 3  x = 3  y = 2
+   i = 3  a[3] = 4
+
+c) i = 2  x = 2  y = 2
+   i = 2  a[2] = 3
+
 Justifique la respuesta construyendo la pila de ejecución.
 
 ####################################################################################
@@ -41,7 +41,7 @@ a) "Nombre"
   a[3] : 4
   x    : 1, 2, 3
   y    : 2, 4
-   
+
 b) "Referencia"
 
   i    : 1, 2, 3
@@ -52,6 +52,7 @@ b) "Referencia"
   y    : 2
 
 c) "Copia Valor"
+Hay dos opciones, puede ser "Copia Valor Resultado" y "Copia Valor" (Mara)
 
   i    : 1, 2
   a[1] : 2
