@@ -4,14 +4,15 @@ char *b;
 a --> (1) puntero a puntero a char --> (2) puntero a char --> (3) char
 b --> (4) puntero a char --> (5) char
 
-a) a = &b   -  (0 dereferencing)
-b) b = *a   -  (2 dereferencing)
-c) *a = b   -  (1 dereferencing)
-d) *a = b   -  (1 dereferencing)
-e) b = *a   -  (2 dereferencing)
-f) *b = **a -  (3 dereferencing)
-g) **a = *b -  (2 dereferencing)
-h) &b = a   -  (1 dereferencing) 
+a) ALGOL: a = b         || C: a = &b   -  (0 dereferencing)
+b) ALGOL: b = a         || C: b = *a   -  (2 dereferencing)
+c) ALGOL: ref a = b     || C: *a = b   -  (1 dereferencing)
+d) ALGOL: ref a = b     || C: *a = b   -  (1 dereferencing)
+e) ALGOL: b = a         || C: b = *a   -  (2 dereferencing)
+f) ALGOL: ref b = a     || C: *b = **a -  (3 dereferencing)
+g) ALGOL: ref ref a = b || C: **a = *b -  (2 dereferencing)
+h) &b = a   -  (1 dereferencing)
+h - Mara) Error de tipo, la conversión no se puede realizar dado que no hay compatibilidad. 4 espera un puntero a char y 1 le estaría brindando el puntero a puntero a char. 
 
 Inicio
 ------
@@ -20,7 +21,7 @@ b = y
 
 a) Hacer que 1 apunte a 4
    -------------------------------
-    a1 = &b4; - (0 dereferencing) 
+    a1 = &b4; - (0 dereferencing)
    -------------------------------
    a1 = y
    a2 = x
@@ -30,7 +31,7 @@ a) Hacer que 1 apunte a 4
 
 b) Hacer que 2 se copie en 4
    ------------------------------
-    b4 = *a1; - (2 dereferencing) 
+    b4 = *a1; - (2 dereferencing)
    ------------------------------
    a1 = x
    a2 = x
@@ -40,7 +41,7 @@ b) Hacer que 2 se copie en 4
 
 c) Hacer que 4 se copie en 2
    -------------------------------
-    *a1 = b4; - (1 dereferencing) 
+    *a1 = b4; - (1 dereferencing)
    -------------------------------
    a1 = y
    a2 = y
@@ -50,7 +51,7 @@ c) Hacer que 4 se copie en 2
 
 d) Hacer que 2 apunte a 5
    -------------------------------
-    *a1 = b4; - (1 dereferencing) 
+    *a1 = b4; - (1 dereferencing)
    -------------------------------
    a1 = y
    a2 = y
@@ -60,7 +61,7 @@ d) Hacer que 2 apunte a 5
 
 e) Hacer que 4 apunte a 3
    -------------------------------
-    b4 = *a1; - (2 dereferencing) 
+    b4 = *a1; - (2 dereferencing)
    -------------------------------
    a1 = x
    a2 = x
@@ -70,7 +71,7 @@ e) Hacer que 4 apunte a 3
 
 f) Copiar 3 en 5
    ---------------------------------
-    *b4 = **a1; - (3 dereferencing) 
+    *b4 = **a1; - (3 dereferencing)
    ---------------------------------
    a1 = x
    a2 = x
@@ -80,7 +81,7 @@ f) Copiar 3 en 5
 
 g) Copiar 5 en 3
    ---------------------------------
-    **a1 = *b4; - (2 dereferencing) 
+    **a1 = *b4; - (2 dereferencing)
    ---------------------------------
    a1 = y
    a2 = y
@@ -109,4 +110,4 @@ d) *a = b  -  (1 dereferencing)
 e) b = a   -  (2 dereferencing)
 f) *b = a  -  (3 dereferencing)
 g) **a = b -  (2 dereferencing)
-h) &b = a  -  (1 dereferencing) 
+h) &b = a  -  (1 dereferencing)
