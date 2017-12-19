@@ -18,7 +18,6 @@ char *str_val;
 
 %token OP_AS
 %token PYC
-%token COMM
 
 %start S
 
